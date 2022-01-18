@@ -23,6 +23,9 @@ Install only the client-ssh.
 Follow only one of the listed installation:
 - [Official installation](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
 - [PowerShell/openssh-portable](https://github.com/PowerShell/OpenSSH-Portable)
+- [Putty Client](https://www.puttysshclient.com/) 
+
+You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal.
 
 ## Generate a new ssh key pair
 ```bash
