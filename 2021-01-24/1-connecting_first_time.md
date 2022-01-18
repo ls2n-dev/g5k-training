@@ -9,6 +9,12 @@ As described in the figure above, when using Grid'5000, you will typically:
 - connect from this access machine to a site frontend
 - on this site frontend, reserve resources (nodes), and connect to those nodes
 
+:::info
+Note that for PHD students: this class session can be used as *heures de
+formation*.
+:::
+
+
 ## Connection by SSH
 
 ### SSH connection through a web interface
