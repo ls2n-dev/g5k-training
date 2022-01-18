@@ -1,4 +1,4 @@
-# Connecting for the first time on Grid'5000
+# Connecting for the first time
 
 The primary way to move around Grid'5000 is using SSH. A [reference page on SSH](https://www.grid5000.fr/w/SSH) is updated and maintained with advanced configuration options that frequent users will find useful.
 
