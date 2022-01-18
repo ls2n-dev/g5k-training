@@ -1,4 +1,3 @@
-# Session 2021-01-24
+# Session Class 2021-01-24
 
-### General Information
-- [Timetable](https://indico.mathrice.fr/event/313/)
+*work in progress*
