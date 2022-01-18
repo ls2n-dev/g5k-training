@@ -6,6 +6,24 @@ The ssh or secure shell is a network protocol for operating networking services 
 
 It stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. This is the simplest explanation possible. To Learn more, please refer to this page.
 
+## Get start with SSH
+
+Source at https://www.openssh.com
+
+### MacOSX
+
+Install with [`brew`](https://brew.sh) by just typing `brew install openssh`
+
+### Linux
+
+Use your favorite installer (`apt` `yum` `yast` `dpkg` `emerg` etc.) and find the package related to the keyword `openssh` or `ssh`.
+Install only the client-ssh.
+
+### Windows
+Follow only one of the listed installation:
+- [Official installation](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
+- [PowerShell/openssh-portable](https://github.com/PowerShell/OpenSSH-Portable)
+
 ## Generate a new ssh key pair
 ```bash
 # ssh-keygen -t rsa
