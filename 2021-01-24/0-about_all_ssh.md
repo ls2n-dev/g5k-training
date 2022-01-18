@@ -31,6 +31,10 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
+- check the number of bits
+  ```bash
+  ssh-keygen -lf <id_rsa>.pub
+  ```
 
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
