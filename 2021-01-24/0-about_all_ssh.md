@@ -22,7 +22,7 @@ Install with [`brew`](https://brew.sh) by just typing `brew install openssh`
 
 ### Linux
 
-Use your favorite installer (`apt` `yum` `yast` `dpkg` `emerg` etc.) and find the package related to the keyword `openssh` or `ssh`.
+Use your favorite installer (`apt` `yum` `dpkg` `emerge` etc.) and find the package related to the keyword `openssh` or `ssh`.
 
 - On [Ubuntu](https://ubuntu.com/server/docs/service-openssh) or [Debian](https://wiki.debian.org/SSH), `apt install openssh-server`
 - On Gentoo, `emerge net-misc/openssh`
