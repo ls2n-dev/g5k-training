@@ -1,4 +1,10 @@
-# SSH
+# OpenSSH
+
+## What is SSH?
+
+The ssh or secure shell is a network protocol for operating networking services securely over a network. It uses encryption standards to securely connect and login to the remote system.
+
+It stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. This is the simplest explanation possible. To Learn more, please refer to this page.
 
 ## Generate a new ssh key pair
 ```bash
@@ -29,3 +35,6 @@ The key's randomart image is:
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
 - [SSH Essentials: Working with SSH Servers, Clients, and Keys](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)
+- Strong passwords recommended by
+  - [ANSSI, french CERT](https://www.ssi.gouv.fr/administration/precautions-elementaires/calculer-la-force-dun-mot-de-passe) (in french)
+  - [CERN](https://security.web.cern.ch/recommendations/en/passwords.shtml) ([Password alternatives](https://security.web.cern.ch/recommendations/en/password_alternatives.shtml))
