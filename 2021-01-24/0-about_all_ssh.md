@@ -2,9 +2,15 @@
 
 ## What is SSH?
 
-The ssh or secure shell is a network protocol for operating networking services securely over a network. It uses encryption standards to securely connect and login to the remote system.
+OpenSSH is a powerful collection of tools for the remote control of, and transfer of data between, networked computers. 
 
-It stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. This is the simplest explanation possible. To Learn more, please refer to this page.
+OpenSSH is a freely available version of the Secure Shell (SSH) protocol family of tools for remotely controlling, or transferring files between, computers.
+
+Traditional tools used to accomplish these functions, such as telnet or rcp, are insecure and transmit the user’s password in cleartext when used. OpenSSH is a network protocol for operating networking services securely over a network (like internet). It uses encryption standards to securely connect and login to the remote system.
+
+OpenSSH provides a server daemon and client tools to facilitate secure, encrypted remote control and file transfer operations, effectively replacing the legacy tools.
+
+OpenSSH stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. 
 
 ## Get start with SSH
 
@@ -19,6 +25,10 @@ Install with [`brew`](https://brew.sh) by just typing `brew install openssh`
 Use your favorite installer (`apt` `yum` `yast` `dpkg` `emerg` etc.) and find the package related to the keyword `openssh` or `ssh`.
 Install only the client-ssh.
 
+- [Ubuntu](https://ubuntu.com/server/docs/service-openssh)
+- [Debian](https://wiki.debian.org/SSH)
+- 
+
 ### Windows
 Follow only one of the listed installation:
 - [Official installation](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
@@ -27,7 +37,10 @@ Follow only one of the listed installation:
 
 You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal.
 
-## Generate a new ssh key pair
+## Generate a new SSH Public and Private Key pair
+
+With SSH, you can run commands on remote computers and servers, send files, and generally manage everything you do from one place. When you are working with multiple SSH servers in multiple locations, or if you are just trying to save some time accessing these servers, you'll want to use an SSH public and private key pair. Key pairs basically make logging into remote machines and running commands easier. 
+
 ```bash
 # ssh-keygen -t rsa
 Generating public/private rsa key pair.
