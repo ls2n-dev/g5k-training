@@ -45,6 +45,14 @@ Additionally, it gives also the list of current or future downtimes due to maint
     https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13386
 ```
 
+**Exercise:** Can you tell me what issue is actually under investigation on site Lyon ?
+<details><summary>Answer</summary>
+<p>
+- https://www.grid5000.fr/status/#LYON
+- https://intranet.grid5000.fr/status/artifact/#LYON [bug#7353](https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353)
+</p>
+</details>
+
 ### On the wiki
 Site pages on the wiki (e.g. [Nantes:Home](https://www.grid5000.fr/w/Nantes:Home)) contain a detailed description of the site's hardware and network.
 
