@@ -108,6 +108,7 @@ You need to :
 
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
+  - [More about SSH for Grid'5000](https://github.com/lnussbaum/slides-lectures/blob/master/ssh/ssh.pdf)
 - [SSH Essentials: Working with SSH Servers, Clients, and Keys](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)
 - [Understand ssh-keygen](https://www.ssh.com/academy/ssh/keygen?hsLang=en)
 - [Understand keys in SSH](https://www.ssh.com/academy/ssh/key)
