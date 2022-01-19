@@ -48,8 +48,10 @@ Additionally, it gives also the list of current or future downtimes due to maint
 **Exercise:** Can you tell me what issue is actually under investigation on site Lyon ?
 <details><summary>Answer</summary>
 <p>
-- https://www.grid5000.fr/status/#LYON
-- https://intranet.grid5000.fr/status/artifact/#LYON [bug#7353](https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353)
+<ul>
+ <li> https://www.grid5000.fr/status/#LYON</li><br>
+ <li> https://intranet.grid5000.fr/status/artifact/#LYON <a href=https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353>bug#7353</a></li><br>
+ </ul>
 </p>
 </details>
 
