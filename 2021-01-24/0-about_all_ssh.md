@@ -12,7 +12,7 @@ OpenSSH provides a server daemon and client tools to facilitate secure, encrypte
 
 OpenSSH stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. 
 
-[!image](https://www.ssh.com/hubfs/Imported_Blog_Media/SSH_simplified_protocol_diagram-2.png)
+![image](https://www.ssh.com/hubfs/Imported_Blog_Media/SSH_simplified_protocol_diagram-2.png)
 
 ## Get start with SSH
 
