@@ -82,4 +82,11 @@ outside% ssh nantes.gtk
 </p>
 </details> 
 
+**Exercise:** Where will I be connected if I do `ssh g5k` ?
+<details><summary>Answer</summary>
+<p>
+Either on the frontal `access-north` or `access-south`
+</p>
+</details> 
+
 
