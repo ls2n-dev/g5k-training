@@ -49,8 +49,8 @@ Additionally, it gives also the list of current or future downtimes due to maint
 <details><summary>Answer</summary>
 <p>
 <ul>
- <li> https://www.grid5000.fr/status/#LYON</li><br>
- <li> https://intranet.grid5000.fr/status/artifact/#LYON <a href=https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353>bug#7353</a></li><br>
+ <li> https://www.grid5000.fr/status/#LYON</li>
+ <li> https://intranet.grid5000.fr/status/artifact/#LYON (<a href=https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353>bug#7353</a>)</li>
  </ul>
 </p>
 </details>
