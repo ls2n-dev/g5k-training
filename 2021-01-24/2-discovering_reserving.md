@@ -58,8 +58,19 @@ Additionally, it gives also the list of current or future downtimes due to maint
 ### On the wiki
 Site pages on the wiki (e.g. [Nantes:Home](https://www.grid5000.fr/w/Nantes:Home)) contain a detailed description of the site's hardware and network.
 
+**Exercise:** How can we see the Lille Wiki Page ?
+<details><summary>Answer</summary>
+<p>
+https://www.grid5000.fr/w/Lille:Home
+</p>
+</details>
+
+
 ### On the status page
 The page information links to the resource status on each site, with two different visualizations available:
 - the current placement and queued jobs status (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
 - the current and planned resources reservations in a Gantt diagram history (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
 
+<!--
+https://www.grid5000.fr/w/TechTeam:UsagePolicyCheck
+-->
