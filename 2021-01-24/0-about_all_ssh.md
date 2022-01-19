@@ -34,7 +34,10 @@ Follow only one of the listed installation:
 - [PowerShell/openssh-portable](https://github.com/PowerShell/OpenSSH-Portable)
 - [Putty Client](https://www.puttysshclient.com/) 
 
-You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal.
+You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal to run your SSH client.
+
+And if you are not admin of your laptop, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/
+
 
 ## Generate a new SSH Public and Private Key pair
 
