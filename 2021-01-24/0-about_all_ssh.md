@@ -8,9 +8,9 @@ OpenSSH is a freely available version of the Secure Shell (SSH) protocol family 
 
 Traditional tools used to accomplish these functions, such as telnet or rcp, are insecure and transmit the user’s password in cleartext when used. OpenSSH is a network protocol for operating networking services securely over a network (like internet). It uses encryption standards to securely connect and login to the remote system.
 
-OpenSSH provides a server daemon and client tools to facilitate secure, encrypted remote control and file transfer operations, effectively replacing the legacy tools.
-
 OpenSSH stores a public key in the remote system and private key in the client system. Thes keys are produced as a pair mathematically. When both are applied to a bi-variable function, it will result in a value which will be used to check whether the pair is valid or invalid. 
+
+The SSH protocol uses encryption to facilitate secure the connection between a client and a server. All user authentication, commands, output, and file transfers are encrypted to protect against attacks in the network and effectively replacing the legacy tools.
 
 ![image](https://www.ssh.com/hubfs/Imported_Blog_Media/SSH_simplified_protocol_diagram-2.png)
 
