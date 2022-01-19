@@ -15,30 +15,34 @@ The SSH protocol uses encryption to facilitate secure the connection between a c
 ![image](https://www.ssh.com/hubfs/Imported_Blog_Media/SSH_simplified_protocol_diagram-2.png)
 
 ## Get start with SSH
-
 Source at https://www.openssh.com
 
-### MacOSX
+## Windows
 
-Install with [`brew`](https://brew.sh) by just typing `brew install openssh`
+Modern versions of Windows have SSH available in Powershell. You can test if it is available by typing ssh --help in Powershell. If it is installed, you should see some useful output. If it is not installed, you will get an error. If SSH is not available in Powershell, then you should install MobaXterm as described below.
 
-### Linux
+An alternative is to install MobaXterm from http://mobaxterm.mobatek.net. You will want to get the Home edition (Installer edition). However, if Git Bash works, you do not need this.
 
-Use your favorite installer (`apt` `yum` `dpkg` `emerge` etc.) and find the package related to the keyword `openssh` or `ssh`.
-
-- On [Ubuntu](https://ubuntu.com/server/docs/service-openssh) or [Debian](https://wiki.debian.org/SSH), `apt install openssh-server`
-- On Gentoo, `emerge net-misc/openssh`
-- On Centos, `yum install openssh-server`
-
-### Windows
 Follow only one of the listed installation:
 - [Official installation](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
 - [PowerShell/openssh-portable](https://github.com/PowerShell/OpenSSH-Portable)
 - [Putty Client](https://www.puttysshclient.com/) 
 
-You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal to run your SSH client.
+### MacOSX
 
-And if you are not admin of your laptop, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/ (Only your g5k login and password authentication method will work.)
+It should come with SSH pre-installed, so you should not need to install anything otherwise install with [`brew`](https://brew.sh) by just typing `brew install openssh`
+
+### Linux
+
+Linux users do not need to install anything, you should be set! Otherwise use your favorite installer (`apt` `yum` `dpkg` `emerge` etc.) and find the package related to the keyword `openssh` or `ssh`.
+
+- On [Ubuntu](https://ubuntu.com/server/docs/service-openssh) or [Debian](https://wiki.debian.org/SSH), `apt install openssh-server`
+- On Gentoo, `emerge net-misc/openssh`
+- On Centos, `yum install openssh-server`
+
+### G5k WebSSH
+
+And if you are not admin of your laptop or didn't manage to have a SSH Client, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/ (Only your g5k login and password authentication method will work.)
 
 
 ## Generate a new SSH Public and Private Key pair
