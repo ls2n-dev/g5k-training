@@ -71,7 +71,7 @@ Host *.g5k
 Once done, you can establish connections to any machine (first of all: frontends) inside Grid'5000 directly, just by suffixing `.g5k` to its hostname (instead of first having to connect to an access machine). E.g.: to connect directly to the `nantes` from outside, just do:
 
 **Exercise:** How do I connect directly to a site with one SSH connection ?
-<details><summary>ANSWER</summary>
+<details><summary>Answer</summary>
 <p>
 We will connect to Lyon.
 
