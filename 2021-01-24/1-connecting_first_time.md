@@ -1,6 +1,6 @@
 # Connecting for the first time
 
-The primary way to move around Grid'5000 is using SSH. A [reference page on SSH](https://github.com/ls2n-dev/g5k-training/blob/8d5f66e4cd8207e0103e75f8b4663f17ac222c3a/2021-01-24/0-about_all_ssh.md) is updated and maintained with advanced configuration options that frequent users will find useful.
+The primary way to move around Grid'5000 is using SSH. A [reference page on SSH](https://github.com/ls2n-dev/g5k-training/blob/main/2021-01-24/0-about_all_ssh.md) is updated and maintained with advanced configuration options that frequent users will find useful.
 
 <img src="https://www.grid5000.fr/mediawiki/images/Grid5000_SSH_access.png" width=80% height=80%>
 
