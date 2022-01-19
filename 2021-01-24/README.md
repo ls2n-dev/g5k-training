@@ -1,6 +1,6 @@
 # Session Class 2021-01-24
 
-## Agenda
+### Agenda
 - Getting help from User Support
 - Overview of control and monitoring tools
 - Connecting for the first time
