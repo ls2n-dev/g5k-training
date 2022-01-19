@@ -50,11 +50,9 @@ With SSH, you can run commands on remote computers and servers, send files, and 
 
 We strongly suggest the use of `rsa` cipher at least 2048 bits or better 4096 bits or `ed25519` keys, avoid the use of `DSA` nor `ECDSA` keys. Legacy `RSA` keys are accepted and the use of a strong passphrase is highly recommended.
 
-
 ```bash
-# ssh-keygen -t rsa
+# ssh-keygen -t rsa [ </path/where/you/want/to/save/your/id_rsa> ]
 Generating public/private rsa key pair.
-Enter file in which to save the key (/path/to/your/.ssh/id_rsa): /path/where/you/want/to/save/your/id_rsa
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in /path/where/you/want/to/save/your/id_rsa.
@@ -75,25 +73,20 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-
 - check the number of bits
   ```bash
-  ssh-keygen -lf <id_rsa>.pub
+  ssh-keygen -lf <ssh_keyname>.pub
   ```
 
-**Exercise:** Create a ed25519 key pair and how many bits is  ?
+**Exercise:** Create a ed25519 key pair and tell me how many bits are used by default ?
 <details><summary>Answer</summary>
 <p>
-We will connect to Lyon.
-
 ```bash
-outside% ssh nantes.gtk
-<login>@fnantes ~ %
+ssh-keygen -t ed25519 -f foo
+256 SHA256:1V2QK6MREVLFpdIq6tAtD2hZoKMRI6m/qIIpVG+MHAc randria@rr-ls2n-mbp-2.home (ED25519)
 ```
 </p>
 </details>
-
-ed25519
 
 ## Grid'5000 Credentials
 An email is sent automatically to the new user by the Grid'5000 User Management Service with instructions to follow to create a new password and a SSH Public Key with a one-shot link. The URL will show the page below :
