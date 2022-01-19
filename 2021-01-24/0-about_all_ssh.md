@@ -36,7 +36,7 @@ Follow only one of the listed installation:
 
 You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell Terminal to run your SSH client.
 
-And if you are not admin of your laptop, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/
+And if you are not admin of your laptop, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/ (Only your g5k login and password authentication method will work.)
 
 
 ## Generate a new SSH Public and Private Key pair
