@@ -44,7 +44,6 @@ Linux users do not need to install anything, you should be set! Otherwise use yo
 
 And if you are not admin of your laptop or didn't manage to have a SSH Client, just go and connect with the g5k webssh portal of the cluster site, here Nantes at https://intranet.grid5000.fr/shell/nantes/ (Only your g5k login and password authentication method will work.)
 
-
 ## Generate a new SSH Public and Private Key pair
 
 With SSH, you can run commands on remote computers and servers, send files, and generally manage everything you do from one place. When you are working with multiple SSH servers in multiple locations, or if you are just trying to save some time accessing these servers, you'll want to use an SSH public and private key pair. Key pairs basically make logging into remote machines and running commands easier. To do so, you will use the command [`ssh-keygen`](https://www.ssh.com/academy/ssh/keygen?hsLang=en)
@@ -77,6 +76,15 @@ The key's randomart image is:
   ```bash
   ssh-keygen -lf <id_rsa>.pub
   ```
+
+## Grid'5000 Credentials
+An email is sent automatically to the new user by the Grid'5000 User Management Service with instructions to follow to create a new password and a SSH Public Key with a one-shot link. The URL will show the page below :
+
+![image](https://user-images.githubusercontent.com/2065392/150173872-75d62e89-623f-48dc-bacc-aa4676cad2fe.png)
+
+You need to :
+- create a strong password
+- cut and paste your new or existing SSH Public Key that you will use to connect to the Grid'5000 frontend portal.
 
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
