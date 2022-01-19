@@ -49,7 +49,7 @@ And if you are not admin of your laptop or didn't manage to have a SSH Client, j
 With SSH, you can run commands on remote computers and servers, send files, and generally manage everything you do from one place. When you are working with multiple SSH servers in multiple locations, or if you are just trying to save some time accessing these servers, you'll want to use an SSH public and private key pair. Key pairs basically make logging into remote machines and running commands easier. To do so, you will use the command [`ssh-keygen`](https://www.ssh.com/academy/ssh/keygen?hsLang=en)
 
 ```bash
-# ssh-keygen -t rsa
+# ssh-keygen -t ed25519
 Generating public/private rsa key pair.
 Enter file in which to save the key (/path/to/your/.ssh/id_rsa): /path/where/you/want/to/save/your/id_rsa
 Enter passphrase (empty for no passphrase):
@@ -71,6 +71,8 @@ The key's randomart image is:
 |o=++*+.... o .E. |
 +----[SHA256]-----+
 ```
+
+We strongly suggest the use of `ed25519` keys, avoid the use of `DSA` nor `ECDSA` keys. Legacy `RSA` keys are accepted and the use of a strong passphrase is highly recommended.
 
 - check the number of bits
   ```bash
