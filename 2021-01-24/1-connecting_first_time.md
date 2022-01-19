@@ -4,10 +4,10 @@ The primary way to move around Grid'5000 is using SSH. A [reference page on SSH]
 
 <img src="https://www.grid5000.fr/mediawiki/images/Grid5000_SSH_access.png" width=80% height=80%>
 
-As described in the figure above, when using Grid'5000, you will typically:
-- connect, using SSH, to an access machine
-- connect from this access machine to a site frontend
-- on this site frontend, reserve resources (nodes), and connect to those nodes
+As described in the figure above, when using Grid'5000, you will typically do these steps:
+- connect by SSH to a frontend access machine `access.grid5000.fr`
+- when connected, you will choose a site frontend server to access to that cluster resources, again by SSH.
+- on this site frontend, you will submit jobs to schedule computing resources (nodes)
 
 ## Connection by SSH
 
