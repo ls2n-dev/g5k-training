@@ -6,6 +6,15 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 
 [OAR Documentation here](http://oar.imag.fr/documentation)
 
+## Some (control) commands
+
+- `oarsub`: submit jobs
+- `oarstat`: check job status
+   - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
+   - `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
+   - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
+- `oardel`: delete a job
+
 ## Basic command in an interactive mode
 
 - To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
