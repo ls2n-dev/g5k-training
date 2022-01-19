@@ -73,9 +73,14 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
+- How to change your passphrase without changing the private key
+  ```
+  ssh-keygen -f <ssh_private_key> -p
+  ```
+  
 - check the number of bits
   ```bash
-  ssh-keygen -lf <ssh_keyname>.pub
+  ssh-keygen -lf <ssh_public_key>.pub
   ```
 
 **Exercise:** Create a ed25519 key pair and tell me how many bits are used by default ?
@@ -96,6 +101,10 @@ An email is sent automatically to the new user by the Grid'5000 User Management 
 You need to :
 - create a strong password
 - cut and paste your new or existing SSH Public Key that you will use to connect to the Grid'5000 frontend portal.
+
+### Add new keys
+- Do not EDIT manually the `~/.ssh/authorized_keys` in your g5k session
+- Use instead the User Management Portal : https://api.grid5000.fr/stable/users/
 
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
