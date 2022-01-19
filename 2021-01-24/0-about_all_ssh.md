@@ -38,7 +38,7 @@ You can use [MobaXterm](https://mobaxterm.mobatek.net/) to emulate a Linux Shell
 
 ## Generate a new SSH Public and Private Key pair
 
-With SSH, you can run commands on remote computers and servers, send files, and generally manage everything you do from one place. When you are working with multiple SSH servers in multiple locations, or if you are just trying to save some time accessing these servers, you'll want to use an SSH public and private key pair. Key pairs basically make logging into remote machines and running commands easier. 
+With SSH, you can run commands on remote computers and servers, send files, and generally manage everything you do from one place. When you are working with multiple SSH servers in multiple locations, or if you are just trying to save some time accessing these servers, you'll want to use an SSH public and private key pair. Key pairs basically make logging into remote machines and running commands easier. To do so, you will use the command [`ssh-keygen`](https://www.ssh.com/academy/ssh/keygen?hsLang=en)
 
 ```bash
 # ssh-keygen -t rsa
@@ -72,6 +72,7 @@ The key's randomart image is:
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
 - [SSH Essentials: Working with SSH Servers, Clients, and Keys](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)
+- [SSH.com Academy](https://www.ssh.com/academy)
 - Strong passwords recommended by
   - [ANSSI helps you to strenghten your password](https://www.ssi.gouv.fr/administration/precautions-elementaires/calculer-la-force-dun-mot-de-passe) (in french)
   - [CERN](https://security.web.cern.ch/recommendations/en/passwords.shtml) ([Password alternatives](https://security.web.cern.ch/recommendations/en/password_alternatives.shtml))
