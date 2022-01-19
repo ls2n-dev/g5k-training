@@ -19,7 +19,7 @@ For example, to access nantes's site, use: https://intranet.grid5000.fr/shell/na
 
 ### Connecting to a Grid'5000 frontal access machine
 
-To enter the Grid'5000 network from Internet, one must use an access machine: `access.grid5000.fr` . For all connections, you must use the login that was provided to you when you created your Grid'5000 account.
+To enter the Grid'5000 network from Internet, one must use an access machine: `access.grid5000.fr` . For all connections, you must use the login that was provided to you when you created your Grid'5000 account. The frontend `access.grid5000.fr` is just a round robin alias to either `access-north` which is currently hosted in Lille, or `access-south` currently hosted in Sophia-Antipolis. 
 
 ```bash
 outside% ssh <login>@access.grid5000.fr
