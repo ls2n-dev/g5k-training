@@ -1,4 +1,4 @@
-# LabClass Session 2021-01-24
+# LabClass Session 2022-01-24
 
 ## Announce
 - *Objectives* : discover and play with Grid'5000 resources.
