@@ -119,35 +119,27 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
   
 **Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
 
-### Reserving only part of a node
+### Reserving node/core resources
 
+#### Part of a node (cores)
 - To reserve only one CPU core in interactive mode, run:
   ```bash
   oarsub -l core=1 -I
+  ```  
+- When reserving only a share of the node's cores, you will have a share of the memory with the same ratio as the cores. If you take the whole node, you will have all the memory of the node. If you take half the cores, you will have half the memory, and so on... You cannot reserve a memory size explicitly.
+- When reserving several CPU cores, there is no guarantee that they will be allocated on a single node. To ensure this, you need to specify that you want a single host:
+  ```bash
+  oarsub -l host=1/core=8 -I
   ```
-  
-When reserving only a share of the node's cores, you will have a share of the memory with the same ratio as the cores. If you take the whole node, you will have all the memory of the node. If you take half the cores, you will have half the memory, and so on... You cannot reserve a memory size explicitly.
-
-When reserving several CPU cores, there is no guarantee that they will be allocated on a single node. To ensure this, you need to specify that you want a single host:
+#### More than one node
+You will probably want to use more than one node on a given site. For instance, how to reserve 2 nodes in an interactive mode ?
 ```bash
-oarsub -l host=1/core=8 -I
+oarsub -l host=2 -I 
 ```
-
-### Working with more than one node
-You will probably want to use more than one node on a given site. 
-
-For instance, how to reserve 2 nodes in an interactive mode ?
-
-```bash
-oarsub -l host=2 -I  [ -t allow_classic_ssh ]
-```
-
 You will obtain a shell on the first node of the reservation. It is up to you to connect to the other nodes and distribute work among them. To list the nodes allocated use the variable `$OAR_FILE_NODES`.
-
 ```bash
 uniq $OAR_FILE_NODES
 ```
-
 By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical ssh command, with the option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh.
 
 
