@@ -119,6 +119,20 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
   
 **Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
 
+### Reserving only part of a node
+
+- To reserve only one CPU core in interactive mode, run:
+  ```bash
+  oarsub -l core=1 -I
+  ```
+  
+When reserving only a share of the node's cores, you will have a share of the memory with the same ratio as the cores. If you take the whole node, you will have all the memory of the node. If you take half the cores, you will have half the memory, and so on... You cannot reserve a memory size explicitly.
+
+When reserving several CPU cores, there is no guarantee that they will be allocated on a single node. To ensure this, you need to specify that you want a single host:
+```bash
+oarsub -l host=1/core=8 -I
+```
+
 ### Batch command
 
 To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
