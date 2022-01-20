@@ -106,6 +106,16 @@ You need to :
 - Do not EDIT manually the `~/.ssh/authorized_keys` in your g5k session
 - Use instead the User Management Portal : https://api.grid5000.fr/stable/users/
 
+**Exercise:** Now add new SSH Public Keys from your user portal session. And check your SSH connection with the new key pair.
+<details><summary>Answer</summary>
+<p>
+- on the portal, go to SSH Keys topic and cut-n-paste your public keys.<br>
+```bash
+ssh -i <new private keypair> <site>.g5k
+```
+</p>
+</details>
+
 ## References read for you
 - [SSH tutorial related to Grid'5000](https://www.grid5000.fr/w/SSH)
   - [More about SSH for Grid'5000](https://github.com/lnussbaum/slides-lectures/blob/master/ssh/ssh.pdf)
