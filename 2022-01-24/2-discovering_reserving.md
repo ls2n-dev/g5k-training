@@ -75,10 +75,11 @@ The page information links to the resource status on each site, with two differe
 **Exercise:** Investigate why node `neowise-8` is down and since when and why ? And how many GPUs does it have ?
 <details><summary>Answer</summary>
 <p>
-https://intranet.grid5000.fr/oar/Lyon/drawgantt-svg (pass your mouse pointer on the histgram)<br>
-https://intranet.grid5000.fr/oar/Lyon/monika.cgi?node=neowise-8<br>
-connect to the site by ssh at lyon.g5k and check the banner information<br>
-https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13655
+- https://www.grid5000.fr/w/Hardware#Clusters<br>
+- https://intranet.grid5000.fr/oar/Lyon/drawgantt-svg (pass your mouse pointer on the histgram)<br>
+- https://intranet.grid5000.fr/oar/Lyon/monika.cgi?node=neowise-8<br>
+- connect to the site by ssh at lyon.g5k and check the banner information<br>
+- https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13655
 </p>
 </details>
 
