@@ -9,6 +9,7 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 ## Some (control) commands
 
 - `oarsub`: submit jobs
+   - use `--project <group name>` (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
 - `oarstat`: check job status
    - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
    - `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
