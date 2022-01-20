@@ -9,4 +9,4 @@
 - Deploying your nodes and create your own experimental environment
 - Using Grid'5000 API
 
-<!--[Program](https://codimd.math.cnrs.fr/s/2sAxhR36w#)-->
+[Courseware](https://codimd.math.cnrs.fr/s/2sAxhR36w#)
