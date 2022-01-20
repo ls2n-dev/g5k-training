@@ -153,6 +153,24 @@ By default, you can only connect to nodes that are part of your reservation, and
   oarsub -l host=1/gpu=2 -I
   ```
 
+### Choosing a job duration
+
+Of course, you might want to run a job for a different duration than one hour. The `-l` option allows you to pass a comma-separated list of parameters specifying the needed resources for the job, and walltime is a special resource defining the duration of your job:
+```
+oarsub -l host=1/core=2,walltime=0:30 -I
+```
+The walltime is the expected duration you envision to complete your work. Its format is [hour:min:sec|hour:min|hour]. For instance:
+- `walltime=5` => 5 hours
+- `walltime=1:22:00` => 1 hour and 22 minutes
+- `walltime=0:03:30` => 3 minutes and 30 seconds
+
+#### Extending the duration of a reservation
+Provided that the resources are still available after your job, you can extend its duration (walltime) using e.g.:
+- This will request to add one hour and a half to job #`12345`. 
+  ```
+  oarwalltime 12345 +1:30
+  ```
+  
 ### Tips & Tricks
 
 To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
