@@ -2,8 +2,31 @@
 
 At this point, you should now be connected to a site frontend, as indicated by your shell prompt (`<login>@f<site>: ~ %`). This machine will **ONLY** be used to reserve and manipulate resources on this site, using the *OAR software suite* will be the only way to request resources before using them. 
 
+## Hardwares
+*https://www.grid5000.fr/w/Hardware*
+### Summary
+```bash
+     8 sites
+    38 clusters
+    760 nodes
+    15694 CPU cores
+    314 GPUs
+    101.49 TiB RAM + 6.0 TiB PMEM
+    515 SSDs and 950 HDDs on nodes (total: 1.42 PB)
+    616.4 TFLOPS (excluding GPUs)
+```
+### By Family
+- [Clusters](https://www.grid5000.fr/w/Hardware#Clusters)
+- [Processors](https://www.grid5000.fr/w/Hardware#Processors)
+- [Memory](https://www.grid5000.fr/w/Hardware#Memory)
+- [Networking](https://www.grid5000.fr/w/Hardware#Networking)
+- [Storage](https://www.grid5000.fr/w/Hardware#Storage)
+- [Accelerators (GPU, Xeon Phi)](https://www.grid5000.fr/w/Hardware#Accelerators)
+- [Nodes models](https://www.grid5000.fr/w/Hardware#Nodes_models)
+
 ## Discovering and visualizing
 There are several ways to learn about the site's resources and their status:
+
 
 ### On SSH connection
 The site's MOTD (message of the day) lists all clusters and their features. 
