@@ -18,13 +18,4 @@ And when you're done you'll be able to:
 - Leverage the core principles and key phases of Grid'5000 to envision and define more meaningful solutions.
 - Understand concepts, rules and procedures on Grid'5000.
 
-## Agenda
-- Getting help from User Support
-- Overview of control and monitoring tools
-- Connecting for the first time
-- Discovering, Visualizing and Reserving resources
-- Using nodes in the default environment
-- Deploying your nodes and create your own experimental environment
-- Using Grid'5000 API
-
 [Courseware](https://codimd.math.cnrs.fr/s/2sAxhR36w#)
