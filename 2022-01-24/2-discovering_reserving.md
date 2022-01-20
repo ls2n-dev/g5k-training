@@ -68,8 +68,19 @@ https://www.grid5000.fr/w/Lille:Home
 
 ### On specific status pages
 The page information links to the resource status on each site, with two different visualizations available:
-- the current placement and queued jobs status (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
-- the current and planned resources reservations in a Gantt diagram history (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
+- the current placement and queued jobs status displayed by Monika (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
+- the current and planned resources reservations in a Gantt Diagram History (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
+
+
+**Exercise:** Investigate why node `neowise-8` is down and since when and why ? And how many GPUs does it have ?
+<details><summary>Answer</summary>
+<p>
+https://intranet.grid5000.fr/oar/Lyon/drawgantt-svg (pass your mouse pointer on the histgram)<br>
+https://intranet.grid5000.fr/oar/Lyon/monika.cgi?node=neowise-8<br>
+connect to the site by ssh at lyon.g5k and check the banner information<br>
+https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13655
+</p>
+</details>
 
 <!--
 https://www.grid5000.fr/w/TechTeam:UsagePolicyCheck
