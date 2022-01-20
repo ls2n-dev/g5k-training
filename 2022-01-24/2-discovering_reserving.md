@@ -66,7 +66,7 @@ https://www.grid5000.fr/w/Lille:Home
 </details>
 
 
-### On the status page
+### On specific status pages
 The page information links to the resource status on each site, with two different visualizations available:
 - the current placement and queued jobs status (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
 - the current and planned resources reservations in a Gantt diagram history (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
