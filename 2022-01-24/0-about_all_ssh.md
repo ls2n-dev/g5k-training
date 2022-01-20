@@ -110,9 +110,7 @@ You need to :
 <details><summary>Answer</summary>
 <p>
 - on the portal, go to SSH Keys topic and cut-n-paste your public keys.<br>
-```bash
-ssh -i <new private keypair> <site>.g5k
-```
+- connect with SSH <code>ssh -i new-private-keypair site.g5k</code>
 </p>
 </details>
 
