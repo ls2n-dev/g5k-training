@@ -83,12 +83,12 @@ The key's randomart image is:
   ssh-keygen -lf <ssh_public_key>.pub
   ```
 
-**Exercise:** Create a ed25519 key pair and tell me how many bits are used by default ?
+**Exercise:** Create your RSA key pair and tell me how many bits are used by default ?
 <details><summary>Answer</summary>
 <p>
 ```bash
-ssh-keygen -t ed25519 -f foo
-256 SHA256:1V2QK6MREVLFpdIq6tAtD2hZoKMRI6m/qIIpVG+MHAc randria@rr-ls2n-mbp-2.home (ED25519)
+ssh-keygen -t rsa -f foo
+ssh-keygen -lf foo
 ```
 </p>
 </details>
