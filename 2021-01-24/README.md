@@ -18,7 +18,7 @@ And when you're done you'll be able to:
 - Leverage the core principles and key phases of Grid'5000 to envision and define more meaningful solutions.
 - Understand concepts, rules and procedures on Grid'5000.
 
-### Agenda
+## Agenda
 - Getting help from User Support
 - Overview of control and monitoring tools
 - Connecting for the first time
