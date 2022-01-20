@@ -19,7 +19,7 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 
 - To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
   ```bash
-  oarsub -I -q besteffort
+  oarsub -I -q besteffort [ --project ... ]
   ```
   As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and you can run commands on the node: `lscpu` or on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
 
