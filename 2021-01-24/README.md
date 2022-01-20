@@ -1,4 +1,4 @@
-# Session Class 2021-01-24
+# LabClass Session 2021-01-24
 
 ### Agenda
 - Getting help from User Support
