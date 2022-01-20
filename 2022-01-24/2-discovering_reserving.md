@@ -95,7 +95,7 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
    - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
 - `oardel`: delete a job
 
-### Basic command in an interactive mode
+### Interactive mode
 
 - To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
   ```bash
@@ -133,21 +133,6 @@ When reserving several CPU cores, there is no guarantee that they will be alloca
 oarsub -l host=1/core=8 -I
 ```
 
-### Batch command
-
-To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
-- reserve a node and run a process that does not end; here a linux `sleep` in an infinity loop. And of course do not use the option `-I`.
-  ```bash
-  oarsub "sleep infinity"
-  ```
-- connect to the node allocated with the job id
-  ```bash
-  oarsub -C <job id>
-  ```
-
-To force end your "infinite" allocation before the deadline falls, you can kill your job with `oardel <job id>`
-
-
 ### Working with more than one node
 You will probably want to use more than one node on a given site. 
 
@@ -164,6 +149,21 @@ uniq $OAR_FILE_NODES
 ```
 
 By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical ssh command, with the option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh.
+
+
+### Tips & Tricks
+
+To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
+- reserve a node and run a process that does not end; here a linux `sleep` in an infinity loop. And of course do not use the option `-I`.
+  ```bash
+  oarsub "sleep infinity"
+  ```
+- connect to the node allocated with the job id
+  ```bash
+  oarsub -C <job id>
+  ```
+
+To force end your "infinite" allocation before the deadline falls, you can kill your job with `oardel <job id>`
 
 ### Requesting specific nodes or clusters
 
