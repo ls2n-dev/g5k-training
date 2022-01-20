@@ -58,7 +58,7 @@ Additionally, it gives also the list of current or future downtimes due to maint
 ### On the wiki
 Site pages on the wiki (e.g. [Nantes:Home](https://www.grid5000.fr/w/Nantes:Home)) contain a detailed description of the site's hardware and network.
 
-**Exercise:** How can we see the Lille Wiki Page ?
+**Exercise:** How can we see on the Wiki Page of Lille Site ?
 <details><summary>Answer</summary>
 <p>
 https://www.grid5000.fr/w/Lille:Home
