@@ -35,20 +35,6 @@ Now you are connected inside one of the G5K frontal access node (`access-north` 
 
 ![g5k sites](https://www.grid5000.fr/mediawiki/images/Renater5-g5k.jpg)
 
-**Exercise:** I want to connect to a particular site. How can I do this ?
-<details><summary>Answer</summary>
-<p>
-We will connect to Lyon.
-
-```bash
-$ ssh <login>@access.grid5000.fr
-access-north% ssh lyon
-```
-</p>
-</details> 
-
-
-
 #### Tips : ssh config file with proxycommand
 Configure SSH aliases using the `ProxyCommand` option. Using this, you can avoid the two-hops connection (access machine, then frontend) but establish connections directly to frontends. This requires using OpenSSH, which is the SSH software available on all GNU/Linux systems, MacOS, and also recent versions of Microsoft Windows.
 
@@ -68,25 +54,8 @@ Host *.g5k
 
 > Warning: the `ProxyCommand` line works if your login shell is `bash`. If not you may have to adapt it. For instance, for the fish shell, this line must look like this `ProxyCommand ssh g5k -W (basename %h .g5k):%p`.
 
-Once done, you can establish connections to any machine (first of all: frontends) inside Grid'5000 directly, just by suffixing `.g5k` to its hostname (instead of first having to connect to an access machine). E.g.: to connect directly to the `nantes` from outside, just do:
+Once done, you can establish connections to any machine (first of all: frontends) inside Grid'5000 directly, just by suffixing `.g5k` to its hostname (instead of first having to connect to an access machine). 
 
-**Exercise:** How do I connect directly to a site with one SSH connection ?
-<details><summary>Answer</summary>
-<p>
-We will connect to Lyon.
 
-```bash
-outside% ssh nantes.gtk
-<login>@fnantes ~ %
-```
-</p>
-</details> 
-
-**Exercise:** Where will I be connected if I do `ssh g5k` ?
-<details><summary>Answer</summary>
-<p>
-Either on the frontal `access-north` or `access-south`
-</p>
-</details> 
 
 
