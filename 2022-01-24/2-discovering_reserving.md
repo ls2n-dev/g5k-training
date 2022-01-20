@@ -142,6 +142,16 @@ uniq $OAR_FILE_NODES
 ```
 By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical ssh command, with the option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh.
 
+#### Other types of resources (GPU)
+- To reserve only one GPU (with the associated CPU cores and share of memory) in interactive mode, run:
+  ```
+  oarsub -l gpu=1 -I
+  ```
+  Even if the node has several GPUs, this reservation will only be able to access a single one. It's a good practice if you only need one GPU: other users will be able to run jobs on the same node to access the other GPUs. Of course, if you need all GPUs of a node, you have the option to reserve the entire node which includes all its GPUs.
+- To reserve several GPUs and ensure they are located in a single node, make sure to specify host=1:
+  ```
+  oarsub -l host=1/gpu=2 -I
+  ```
 
 ### Tips & Tricks
 
