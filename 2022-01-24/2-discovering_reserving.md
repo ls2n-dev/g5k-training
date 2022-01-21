@@ -184,6 +184,8 @@ So far, all examples were letting OAR decide which resource to allocate to a job
 oarsub -l gpu=1 -I -t besteffort -t exotic
 ```
 
+**WARNING** When using the `-t exotic` option, you can still obtain non-exotic resources! You should filter on the cluster name (`-p` option) or other properties if you want exclusively exotic resources.
+
 ### Choosing a job duration
 
 Of course, you might want to run a job for a different duration than one hour. The `-l` option allows you to pass a comma-separated list of parameters specifying the needed resources for the job, and walltime is a special resource defining the duration of your job:
@@ -218,8 +220,8 @@ If you specify the job's start date, it is an advance reservation. OAR will just
 - The list of allocated resources to an advance reservation job is fixed and known as soon as the advance reservation is validated. But you will get the actual list of resources (that is with unavailable resources removed for it) when the advance reservation starts.
 - To coordinate the start date of OAR jobs on several sites, oargrid or funk use advance reservations.
 
-### Using OAR properties
-
+### Further with OAR
+#### Properties
 - Nodes with Infiniband FDR interfaces @nancy site :
   ```bash 
   oarsub -p "ib='FDR'" -l host=5,walltime=00:02:00 -I -q besteffort
@@ -232,7 +234,12 @@ If you specify the job's start date, it is an advance reservation. OAR will just
   ```bash
   oarsub -p "cputype = 'Intel Xeon E5-2630 v4'" -l host=3,walltime=2 -I  
   ```
-  
+#### Advanced
+- [Multi-site jobs with OARGrid](https://www.grid5000.fr/w/Advanced_OAR#Multi-site_jobs_with_OARGrid)
+- [Best Effort Mode Jobs](https://www.grid5000.fr/w/Advanced_OAR#Using_best_effort_mode_jobs)
+- [Checkpoint Mechanism](https://www.grid5000.fr/w/Advanced_OAR#Using_the_checkpointing_trigger_mechanism)
+- [Job Dependency](https://www.grid5000.fr/w/Advanced_OAR#Using_jobs_dependency)
+
 ### Job submission
 
 ```bash
