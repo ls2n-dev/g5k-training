@@ -1,129 +1,28 @@
-# Allocating and accessing resources with OAR
+# Using nodes in the default environment
 
-OAR is the **resources and jobs management system** (a.k.a batch manager) used in Grid'5000, just like in traditional HPC centers (commonly with SLURM, PBS, etc.). However, settings and rules of OAR that are configured in Grid'5000 slightly differ from traditional batch manager setups in HPC centers, in order to match the requirements for an experimentation testbed and **not for production use**! 
+When you run `oarsub`, you gain access to physical nodes with a default (standard) software environment. This is a Debian-based system that is regularly updated by the technical team. It contains many pre-installed software and standard softwares installed in the default environment like: `Git, GCC, Python, Pip, Numpy, Ruby, Java...`
 
-In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu core)**, but by default a OAR job reserves a host (physical computer including all its cpus and cores, and possibly gpus). Hence, what OAR calls nodes are hosts (physical machines). In the `oarsub` resource request (`-l` arguments), nodes is an alias for host, so both are equivalent. But prefer using host for consistency with other argumnents and other tools that expose host not nodes. 
+*Check out by yourself*
 
-[OAR Documentation here](http://oar.imag.fr/documentation)
+## Home directory and /tmp
 
-## Some (control) commands
+On each node, the home directory is a network filesystem (NFS): data in your home directory is not actually stored on the node itself, it is stored on a storage server managed by the Grid'5000 team. In particular, it means that all reserved nodes share the same home directory, and it is also shared with the site frontend. For example, you can compile or install software in your home (possibly using pip, virtualenv), and it will be usable on all your nodes.
 
-- `oarsub`: submit jobs
-   - use `--project <group name>` (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
-- `oarstat`: check job status
-   - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
-   - `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
-   - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
-- `oardel`: delete a job
+On the other hand, the /tmp/ directory is stored on a local disk of the node. Use this directory if you need to access data locally.
+Note.png 	Note
 
-## Basic command in an interactive mode
+The home directory is only shared within a site. Two nodes from different sites will not have access to the same home.
 
-- To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
-  ```bash
-  oarsub -I -q besteffort [ --project ... ]
-  ```
-  As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and you can run commands on the node: `lscpu` or on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
+## Becoming root with sudo-g5k
 
-- To reserve only part of a node. For e.g. only 2 CPU cores for `2 minutes` on the same host, run:
-  ```bash
-  oarsub -q besteffort -l host=1/core=2,walltime=00:02:00 -I
-  ```
+On HPC clusters, users typically don't have root access. However, Grid'5000 allows more flexibility: if you need to install additional system packages or to customize the system, it is possible to become root. The tool to do this is called sudo-g5k.
 
-  - stress pinned cores `stress --cpu`
-  - checkout with `htop -u ...`
+Using sudo-g5k has a cost for the platform: at the end of your job, the node needs to be completely reinstalled so that it is clean for the next user. It is best to avoid running sudo-g5k in very short jobs.
 
-- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`.
-- To reserve a specific device, like a GPU. Available only on sites like Lyon, Lille, Grenble and Nancy. Here we reserve 1 GPU:
-  ```bash
-  oarsub -l gpu=1 -I
-  ```
-  
-**Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
+## Additional disks and storage
 
-## Batch command
+Some nodes have additional local disks, see Hardware#Storage for a list of available disks for each cluster. There are two ways to access these local disks:
+- On some clusters, local disks need to be reserved to be accessible. See Disk reservation for a list of these clusters and for documentation on the reservation process.
+- On other clusters, local disks can be used directly. In this case, jump directly to Using local disks.
 
-To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
-- reserve a node and run a process that does not end; here a linux `sleep` in an infinity loop. And of course do not use the option `-I`.
-  ```bash
-  oarsub "sleep infinity"
-  ```
-- connect to the node allocated with the job id
-  ```bash
-  oarsub -C <job id>
-  ```
-
-To force end your "infinite" allocation before the deadline falls, you can kill your job with `oardel <job id>`
-
-
-### Working with more than one node
-You will probably want to use more than one node on a given site. 
-
-For instance, how to reserve 2 nodes in an interactive mode ?
-
-```bash
-oarsub -l host=2 -I  [ -t allow_classic_ssh ]
-```
-
-You will obtain a shell on the first node of the reservation. It is up to you to connect to the other nodes and distribute work among them. To list the nodes allocated use the variable `$OAR_FILE_NODES`.
-
-```bash
-uniq $OAR_FILE_NODES
-```
-
-By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical ssh command, with the option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh.
-
-## Requesting specific nodes or clusters
-
-So far, all examples were letting OAR decide which resource to allocate to a job. It is possible to obtain finer-grained control on the allocated resources by using filters. 
-
-```bash
-oarsub -l host=1/gpu=1 -I -t exotic  
-```
-
-## Using OAR properties
-
-- Nodes with Infiniband FDR interfaces @nancy site :
-  ```bash 
-  oarsub -p "ib='FDR'" -l host=5,walltime=00:02:00 -I -q besteffort
-  ```
-- Nodes with 2 GPUs @lille site :
-  ```bash
-  oarsub -p "gpu_count = 2" -l host=3,walltime=2 -I
-  ```
-- Nodes with a specific CPU model:
-  ```bash
-  oarsub -p "cputype = 'Intel Xeon E5-2630 v4'" -l host=3,walltime=2 -I  
-  ```
-  
-## Job submission
-
-```bash
-cat<<EOF>$HOME/myjob.sh
-#!/bin/zsh
-#OAR -l host=1/core=1,walltime=00:05:00
-#OAR -p cluster='econome'
-hostname
-EOF
-chmod +x $HOME/myjob.sh
-oarsub -S $HOME/myjob.sh
-```
-
-## Docker and Singularity
-
-- run with singularity a docker running a `busybox` linux
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity exec docker://busybox uname -a"
-  ```
-- run a `lolcow`
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity run docker://godlovedc/lolcow"
-  ```
-- run a `gentoo` distro in a docker image
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity exec docker://gentoo/stage3-amd64 cat /etc/gentoo-release"
-  ```
-- run a tensorflow on a gpu cluster
-  ```bash
-  ssh nancy.g5k
-  oarsub -q testing -p "cluster='gruss'" -l gpu=1,core=2 "singularity run --nv docker://tensorflow/tensorflow:latest-gpu"
-  ```
+In both cases, the disks are simply provided as raw devices, and it is the responsibility of the user to partition them and create a filesystem. Note that there may still be partitions and filesystems present from a previous job. In addition to local disks, more storage options are available. 
