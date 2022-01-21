@@ -85,19 +85,20 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 
 [OAR Documentation here](http://oar.imag.fr/documentation)
 
-### Some (control) commands
+### Some useful (control) commands
 
-- `oarsub`: submit jobs
-- `oarstat`: check job status
-   - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
-   - `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
-   - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
-- `oardel`: delete a job
-
-### Tips & Best Practices
-#### oarsub
+#### `oarsub` : submit jobs
 - use option `-t besteffort` for *BestEffort" jobs which are low priority jobs: they can be killed by the scheduler to favour higher priority jobs. *BestEffort* jobs do not consume your quota.
 - use option `--project <group name>` when your account is associated to (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
+- use option `-t allow_classic_ssh` to use `ssh` command instead of `oarsh` by default. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)
+
+#### `oarstat`: check job status
+- `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
+- `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
+- `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
+
+#### `oardel`: delete a job
+
 
 ### Interactive mode
 
@@ -109,7 +110,7 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 
 - To reserve only part of a node. For e.g. only 2 CPU cores for `2 minutes` on the same host, run:
   ```bash
-  oarsub -q besteffort -l host=1/core=2,walltime=00:02:00 -I
+  oarsub -t besteffort -l host=1/core=2,walltime=00:02:00 -I
   ```
 
   - stress pinned cores `stress --cpu`
