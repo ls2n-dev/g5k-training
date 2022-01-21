@@ -88,18 +88,22 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 ### Some (control) commands
 
 - `oarsub`: submit jobs
-   - use `--project <group name>` (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
 - `oarstat`: check job status
    - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
    - `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
    - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
 - `oardel`: delete a job
 
+### Tips & Best Practices
+#### oarsub
+- use option `-t besteffort` for *BestEffort" jobs which are low priority jobs: they can be killed by the scheduler to favour higher priority jobs. *BestEffort* jobs do not consume your quota.
+- use option `--project <group name>` when your account is associated to (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
+
 ### Interactive mode
 
 - To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
   ```bash
-  oarsub -I -t besteffort [ --project ... ]
+  oarsub -I
   ```
   As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and you can run commands on the node: `lscpu` or on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
 
