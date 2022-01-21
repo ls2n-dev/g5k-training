@@ -76,12 +76,11 @@ The page information links to the resource status on each site, with two differe
 - the current placement and queued jobs status displayed by Monika (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
 - the current and planned resources reservations in a Gantt Diagram History (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
 
-
 ## Allocating and accessing resources with OAR
 
 OAR is the **resources and jobs management system** (a.k.a batch manager) used in Grid'5000, just like in traditional HPC centers (commonly with SLURM, PBS, etc.). However, settings and rules of OAR that are configured in Grid'5000 slightly differ from traditional batch manager setups in HPC centers, in order to match the requirements for an experimentation testbed and **not for production use**! 
 
-In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu core)**, but by default a OAR job reserves a host (physical computer including all its cpus and cores, and possibly gpus). Hence, what OAR calls nodes are hosts (physical machines). In the `oarsub` resource request (`-l` arguments), nodes is an alias for host, so both are equivalent. But prefer using host for consistency with other argumnents and other tools that expose host not nodes. 
+In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu core)**, but by default a OAR job reserves a host (physical computer including all its cpus and cores, and possibly gpus). Hence, what OAR calls nodes are hosts (physical machines). In the `oarsub` resource request (`-l` arguments), `node` is an alias for `host`, so both are equivalent. But prefer here using `host` for consistency with other arguments and other tools that expose host not node. 
 
 [OAR Documentation here](http://oar.imag.fr/documentation)
 
@@ -98,44 +97,41 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
 
 #### `oardel`: delete a job
+- `oardel JOBID`
 
+### Passive and interactive modes
+#### Interactive
+In interactive mode (use option `-I`), a shell is opened on the first default resource (i.e. node) of the job (or on the frontend, if the job is of type `deploy`). In interactive mode, we have 3 ways to kill a job (free a resource) :
+- when the job's `shell` is closed (logout of your session)
+- when the job's `walltime` is reached. 
+- when you explicitly perform `oardel` with the job ID.
 
-### Interactive mode
-
-- To reserve a single host (one node) for one hour, in an interactive mode (`-I` option), just do:
+To reserve a job/resource in an interactive mode (connected to job's node shell), just do: 
+- here oar will allocates by default a single host for one hour (by default)
   ```bash
   oarsub -I
   ```
   As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and you can run commands on the node: `lscpu` or on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
-
-- To reserve only part of a node. For e.g. only 2 CPU cores for `2 minutes` on the same host, run:
-  ```bash
-  oarsub -t besteffort -l host=1/core=2,walltime=00:02:00 -I
-  ```
-
-  - stress pinned cores `stress --cpu`
-  - checkout with `htop -u ...`
-
-- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`.
-- To reserve a specific device, like a GPU. Available only on sites like Lyon, Lille, Grenble and Nancy. Here we reserve 1 GPU:
-  ```bash
-  oarsub -l gpu=1 -I
-  ```
   
 **Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
 
 ### Reserving node/core resources
-
 #### Part of a node (cores)
-- To reserve only one CPU core in interactive mode, run:
+- To reserve only 1 CPU core in interactive mode, run:
   ```bash
-  oarsub -l core=1 -I
+  oarsub -l core=1 -I -t besteffort
   ```  
+  Check with `nproc` (divide number by 2 for physical cores) 
+  
 - When reserving only a share of the node's cores, you will have a share of the memory with the same ratio as the cores. If you take the whole node, you will have all the memory of the node. If you take half the cores, you will have half the memory, and so on... You cannot reserve a memory size explicitly.
 - When reserving several CPU cores, there is no guarantee that they will be allocated on a single node. To ensure this, you need to specify that you want a single host:
   ```bash
   oarsub -l host=1/core=8 -I
   ```
+  - stress pinned cores `stress --cpu`
+  - checkout with `htop -u ...`
+
+  
 #### More than one node
 You will probably want to use more than one node on a given site. For instance, how to reserve 2 nodes in an interactive mode ?
 ```bash
@@ -157,6 +153,13 @@ By default, you can only connect to nodes that are part of your reservation, and
   ```
   oarsub -l host=1/gpu=2 -I
   ```
+
+- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`.
+- To reserve a specific device, like a GPU. Available only on sites like Lyon, Lille, Grenble and Nancy. Here we reserve 1 GPU:
+  ```bash
+  oarsub -l gpu=1 -I
+  ```
+
 
 ### Choosing a job duration
 
