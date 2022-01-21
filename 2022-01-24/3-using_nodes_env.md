@@ -25,7 +25,7 @@ Some nodes have additional local disks (not on Nantes site), see [Hardware/Stora
 
 In both cases, the disks are simply provided as raw devices, and it is the responsibility of the user to partition them and create a filesystem. Note that there may still be partitions and filesystems present from a previous job. In addition to local disks, more [storage options](https://www.grid5000.fr/w/Storage) are available. 
 
- <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-Remember that Grid'5000 does NOT have a BACKUP service for storage it provides: it is your responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy). 
-</div> 
+<div class="notecard warning">
+<p>Remember that Grid'5000 does NOT have a BACKUP service for storage it provides: it is your responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy).</p>
+</div>
+
