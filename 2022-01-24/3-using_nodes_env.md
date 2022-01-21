@@ -4,14 +4,14 @@ When you run `oarsub`, you gain access to physical nodes with a default (standar
 
 *Play on a node by yourself*
 
-## Home directory and /tmp
+## Home directory and `/tmp`
 
 On each node, we have:
 - the home directory `/home` is a network filesystem (NFS) and data in this directory is not actually stored on the node itself, it is stored on a storage server managed by the Grid'5000 team. In particular, it means that all reserved nodes share the same home directory, and it is also shared with the site frontend. For example, you can compile or install software in your home (possibly using pip, virtualenv), and it will be usable on all your nodes. The home directory is only **shared within a site**. Two nodes from different sites will not have access to the same home.
 
 - the `/tmp` directory is stored on a local disk of the node. Use this directory if you need to access data locally.
 
-## Becoming root with sudo-g5k
+## Becoming root with `sudo-g5k`
 
 On HPC clusters, users typically don't have root access. However, Grid'5000 allows more flexibility: if you need to install additional system packages or to customize the system, it is possible to become (sudo) root. The tool to do this is called `sudo-g5k`.
 
