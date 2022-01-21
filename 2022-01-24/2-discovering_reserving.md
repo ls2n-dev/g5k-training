@@ -21,7 +21,7 @@ At this point, you should now be connected to a site frontend, as indicated by y
 - [Memory](https://www.grid5000.fr/w/Hardware#Memory)
 - [Networking](https://www.grid5000.fr/w/Hardware#Networking)
 - [Storage](https://www.grid5000.fr/w/Hardware#Storage)
-- [Accelerators (GPU, Xeon Phi)](https://www.grid5000.fr/w/Hardware#Accelerators)
+- [Accelerators (GPU, Xeon Phi)](https://www.grid5000.fr/w/Hardware#Accelerators_.28GPU.2C_Xeon_Phi.29)
 - [Nodes models](https://www.grid5000.fr/w/Hardware#Nodes_models)
 
 ## Discovering and visualizing
@@ -164,13 +164,13 @@ And another solution is simplely to use an [Advanced Reservation Jobs](#advanced
   oarsub -l gpu=1 -I
   ```
   Even if the node has several GPUs, this reservation will only be able to access a single one. It's a good practice if you only need one GPU: other users will be able to run jobs on the same node to access the other GPUs. Of course, if you need all GPUs of a node, you have the option to reserve the entire node which includes all its GPUs.
-- To reserve several GPUs and ensure they are located in a single node, make sure to specify host=1:
+- To reserve several GPUs and ensure they are located in a single node, make sure to specify `host=1`:
   ```
   oarsub -l host=1/gpu=2 -I
   ```
 
 - To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`. **Warning** `ecotype` cluster is down.
-- To reserve a specific device, like a GPU. Available only on sites like Lyon, Lille, Grenble and Nancy. Here we reserve 1 GPU:
+- To reserve a specific device, like a GPU. [Sites where GPUs are available]. Here we reserve 1 GPU:
   ```bash
   oarsub -l gpu=1 -I
   ```
