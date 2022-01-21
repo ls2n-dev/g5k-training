@@ -110,7 +110,9 @@ To reserve a job/resource in an interactive mode (connected to job's node shell)
   ```bash
   oarsub -I
   ```
-  As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and you can run commands on the node: `lscpu` or on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
+- As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and 
+- You can run useful commands like `lscpu`, `uname -a`, `nproc`
+- or check on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
   
 **Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
 
@@ -170,11 +172,17 @@ And another solution is simplely to use an [Advanced Reservation Jobs](#advanced
   ```
 
 - To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`. **Warning** `ecotype` cluster is down.
-- To reserve a specific device, like a GPU. [Sites where GPUs are available]. Here we reserve 1 GPU:
+- To reserve a specific device, like an accelerator GPU. [Sites where GPUs are available](https://www.grid5000.fr/w/Hardware#Accelerators_.28GPU.2C_Xeon_Phi.29). Here we reserve 1 GPU on Lyon site:
   ```bash
-  oarsub -l gpu=1 -I
+  outside% ssh lyon.g5k
+  flyon%  oarsub -l gpu=1 -I -t besteffort
   ```
 
+#### Requesting specific nodes or clusters
+So far, all examples were letting OAR decide which resource to allocate to a job. It is possible to obtain finer-grained control on the allocated resources by using filters. 
+```bash
+oarsub -l gpu=1 -I -t besteffort -t exotic
+```
 
 ### Choosing a job duration
 
@@ -209,16 +217,6 @@ If you specify the job's start date, it is an advance reservation. OAR will just
 - If after 400 seconds, if not all resources are available, the job will start with fewer resources than initially allocated. This is however quite unusual.
 - The list of allocated resources to an advance reservation job is fixed and known as soon as the advance reservation is validated. But you will get the actual list of resources (that is with unavailable resources removed for it) when the advance reservation starts.
 - To coordinate the start date of OAR jobs on several sites, oargrid or funk use advance reservations.
-
-
-
-### Requesting specific nodes or clusters
-
-So far, all examples were letting OAR decide which resource to allocate to a job. It is possible to obtain finer-grained control on the allocated resources by using filters. 
-
-```bash
-oarsub -l host=1/gpu=1 -I -t exotic  
-```
 
 ### Using OAR properties
 
