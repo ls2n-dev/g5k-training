@@ -145,9 +145,18 @@ You will probably want to use more than one node on a given site.
 #### Interactive mode without shell
 You may not want a job to open a shell or to run a script when the job starts, for example because you will use the reserved resources from a program whose lifecycle is longer than the job (and which will use the resources by connecting to the job).
 
-One trick to achieve this is to run the job in passive mode with a long `sleep` command. One drawback of this method is that the job may terminate with status error if the sleep is killed. This can be a problem in some situations, eg. when using job dependencies.
+One trick to achieve this is to run the job in passive mode with a long `sleep` command. One drawback of this method is that the job may terminate with status error if the sleep is killed. This can be a problem in some situations, eg. when using job dependencies. To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
+- reserve a node and run a process that does not end; here a linux `sleep` in an infinity loop. And of course do not use the option `-I`.
+  ```bash
+  oarsub "sleep infinity"
+  ```
+  To force end your "infinite" allocation before the deadline falls, you can kill your job with `oardel <job id>`
+- connect to the node allocated with the job id
+  ```bash
+  oarsub -C <job id>
+  ```
 
-Another solution is to use an advance reservation (see below) with a starting date very close in the future, or even with the current date and time. 
+And another solution is simplely to use an [Advanced Reservation Jobs](#advanced-reservation) with a starting date very close in the future, or even with the current date and time. 
 
 #### Other types of resources (GPU)
 - To reserve only one GPU (with the associated CPU cores and share of memory) in interactive mode, run:
@@ -160,7 +169,7 @@ Another solution is to use an advance reservation (see below) with a starting da
   oarsub -l host=1/gpu=2 -I
   ```
 
-- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`.
+- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`. **Warning** `ecotype` cluster is down.
 - To reserve a specific device, like a GPU. Available only on sites like Lyon, Lille, Grenble and Nancy. Here we reserve 1 GPU:
   ```bash
   oarsub -l gpu=1 -I
@@ -184,20 +193,24 @@ Provided that the resources are still available after your job, you can extend i
   ```
   oarwalltime 12345 +1:30
   ```
-  
-### Tips & Tricks
 
-To avoid unanticipated termination of your jobs in case of errors (terminal closed by mistake, network disconnection), you can either use tools such as `tmux` or `screen`, or you can also do it in 2 steps by using the job id associated to your reservation :
-- reserve a node and run a process that does not end; here a linux `sleep` in an infinity loop. And of course do not use the option `-I`.
-  ```bash
-  oarsub "sleep infinity"
-  ```
-- connect to the node allocated with the job id
-  ```bash
-  oarsub -C <job id>
-  ```
+### Batch jobs and advance reservation jobs
+#### Batch jobs
+If you do not specify the job's start date (`oarsub -r` option), then your job is a batch job. It lets OAR choose the best schedule (start date).
+- With batch jobs, you're guaranteed to get the count of allocated resources you requested, because OAR chooses what resources to allocate to the job just before its start. If some resources suddenly become unavailable, OAR changes the assigned resources and/or the start date.
+- Therefore, you cannot get the actual list of resources until the job starts (but a forecast is provided, such as what is shown e.g. in the [Drawgantt diagrams for Nantes Site](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)).
+- With batch jobs, you cannot know the start date of your job until it actually starts (any event can change the forecast). But OAR gives an estimation of the start date (such as shown in the Drawgantt diagram, which also changes after any event).
 
-To force end your "infinite" allocation before the deadline falls, you can kill your job with `oardel <job id>`
+#### Advanced reservations
+If you specify the job's start date, it is an advance reservation. OAR will just try to find resources for the given schedule, fixed by you.
+- The [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) allows no more than 2 advanced reservations per site (excluding reservations that start in less than one hour)
+- With advance reservation jobs, you're not guaranteed to get the count of resources you requested, because OAR planned the allocation of resources at the reservation time.
+- If some resources became unavailable when the job has to start, the job is delayed a bit in case resources may come back (e.g. return from standby).
+- If after 400 seconds, if not all resources are available, the job will start with fewer resources than initially allocated. This is however quite unusual.
+- The list of allocated resources to an advance reservation job is fixed and known as soon as the advance reservation is validated. But you will get the actual list of resources (that is with unavailable resources removed for it) when the advance reservation starts.
+- To coordinate the start date of OAR jobs on several sites, oargrid or funk use advance reservations.
+
+
 
 ### Requesting specific nodes or clusters
 
