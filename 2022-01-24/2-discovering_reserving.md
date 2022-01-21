@@ -89,7 +89,6 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 #### `oarsub` : submit jobs
 - use option `-t besteffort` for *BestEffort" jobs which are low priority jobs: they can be killed by the scheduler to favour higher priority jobs. *BestEffort* jobs do not consume your quota.
 - use option `--project <group name>` when your account is associated to (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
-- use option `-t allow_classic_ssh` to use `ssh` command instead of `oarsh` by default. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)
 
 #### `oarstat`: check job status
 - `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
@@ -121,27 +120,34 @@ To reserve a job/resource in an interactive mode (connected to job's node shell)
   ```bash
   oarsub -l core=1 -I -t besteffort
   ```  
-  Check with `nproc` (divide number by 2 for physical cores) 
+  - check with `nproc` (divide number by 2 for physical cores) 
   
 - When reserving only a share of the node's cores, you will have a share of the memory with the same ratio as the cores. If you take the whole node, you will have all the memory of the node. If you take half the cores, you will have half the memory, and so on... You cannot reserve a memory size explicitly.
 - When reserving several CPU cores, there is no guarantee that they will be allocated on a single node. To ensure this, you need to specify that you want a single host:
   ```bash
-  oarsub -l host=1/core=8 -I
+  oarsub -l host=1/core=4 -I
   ```
-  - stress pinned cores `stress --cpu`
-  - checkout with `htop -u ...`
-
+  - stress pinned cores `stress --cpu 5`
+  - check with `htop -u $(whoami)`
   
 #### More than one node
-You will probably want to use more than one node on a given site. For instance, how to reserve 2 nodes in an interactive mode ?
-```bash
-oarsub -l host=2 -I 
-```
-You will obtain a shell on the first node of the reservation. It is up to you to connect to the other nodes and distribute work among them. To list the nodes allocated use the variable `$OAR_FILE_NODES`.
-```bash
-uniq $OAR_FILE_NODES
-```
-By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical ssh command, with the option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh.
+You will probably want to use more than one node on a given site. 
+- For instance, how to reserve 2 nodes in an interactive mode ?
+  ```bash
+  oarsub -l host=2 -I 
+  ```
+- You will obtain a shell on the first node of the reservation. It is up to you to connect to the other nodes and distribute work among them. To list the nodes allocated use the variable `$OAR_FILE_NODES`.
+  ```bash
+  uniq $OAR_FILE_NODES
+  ```
+- By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical `ssh` command use option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)
+
+#### Interactive mode without shell
+You may not want a job to open a shell or to run a script when the job starts, for example because you will use the reserved resources from a program whose lifecycle is longer than the job (and which will use the resources by connecting to the job).
+
+One trick to achieve this is to run the job in passive mode with a long `sleep` command. One drawback of this method is that the job may terminate with status error if the sleep is killed. This can be a problem in some situations, eg. when using job dependencies.
+
+Another solution is to use an advance reservation (see below) with a starting date very close in the future, or even with the current date and time. 
 
 #### Other types of resources (GPU)
 - To reserve only one GPU (with the associated CPU cores and share of memory) in interactive mode, run:
