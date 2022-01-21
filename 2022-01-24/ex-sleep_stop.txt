@@ -1,19 +1,32 @@
+# Exercice
+#  1. connect to nantes site and run this submission
+#  2. cut and paste following commands.
 #
-# connect to nantes site and run this submission
+
 oarsub -l core=1 -t besteffort --project=lab-2022-ls2n-g5k-tuto_fundamentals "sleep infinite"
+
 #
 # cut and paste the last command's line result beginning with OAR_JOB_ID= after the instruction below export
+
 export OAR_JOB_ID=
+
 #
 # check if your job is still running with the status 'R'
+
 oarstat -u `whoami`
+
 #
 # connect to your job's resource machine
+
 oarsub -C $OAR_JOB_ID
+
 #
 # do stuff on the machine and logout (^D or exit)
 # check again if your job/resource is still running or not ? if no why and if yes why :)
+
 oarstat -u `whoami`
+
 #
 # if still running, how to stop your job/resource without using 'oardel'
+# Answer ?
 
