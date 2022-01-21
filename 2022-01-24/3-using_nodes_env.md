@@ -1,5 +1,9 @@
 # Using nodes in the default environment
 
+| :exclamation:  This is very important   |
+|-----------------------------------------|
+
+
 When you run `oarsub`, you gain access to physical nodes with a default (standard) software environment. This is a Debian-based system that is regularly updated by the technical team. It contains many pre-installed software and standard softwares installed in the default environment like: `Git, GCC, Python, Pip, Numpy, Ruby, Java...`
 
 *Play on a node by yourself*
