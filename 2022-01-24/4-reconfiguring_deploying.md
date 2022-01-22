@@ -8,7 +8,7 @@ Most Grid'5000 users use resources in a different, much more powerful way: they 
 ## Deploying nodes with Kadeploy
 
 ### Reserve one node 
-The deployment job type is required to allow deployment with *Kadeploy*
+The deployment job type is required to allow deployment with *Kadeploy* by setting the flag `-t deploy`.
 
 ```bash
 oarsub -I -l host=1,walltime=00:30:00 -t deploy
@@ -45,3 +45,7 @@ kadeploy3 -f $OAR_NODE_FILE -e ubuntu1804-x64-min -k
 ```bash
 ssh root@<new-machine>
 ```
+
+|:memo: Read further|
+|:---|
+|https://www.grid5000.fr/w/Advanced_Kadeploy<br>https://www.grid5000.fr/w/Environment_creation|
