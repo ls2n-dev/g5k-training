@@ -7,9 +7,12 @@ When you run `oarsub`, you gain access to physical nodes with a default (standar
 ## Home directory and `/tmp`
 
 On each node, we have:
-- the home directory `/home` is a network filesystem (NFS) and data in this directory is not actually stored on the node itself, it is stored on a storage server managed by the Grid'5000 team. In particular, it means that all reserved nodes share the same home directory, and it is also shared with the site frontend. For example, you can compile or install software in your home (possibly using pip, virtualenv), and it will be usable on all your nodes. The home directory is only **shared within a site**. Two nodes from different sites will not have access to the same home.
-
+- the home directory `/home` is a network filesystem (NFS) and data in this directory is not actually stored on the node itself, it is stored on a storage server managed by the Grid'5000 team. In particular, it means that all reserved nodes share the same home directory, and it is also shared with the site frontend. For example, you can compile or install software in your home (possibly using pip, virtualenv), and it will be usable on all your nodes. 
 - the `/tmp` directory is stored on a local disk of the node. Use this directory if you need to access data locally.
+
+|:memo: Take note of this|
+|:---|
+|The home directory is only **shared within a site**. Two nodes from different sites will not have access to the same home.|
 
 ## Becoming root with `sudo-g5k`
 
@@ -18,6 +21,17 @@ On HPC clusters, users typically don't have root access. However, Grid'5000 allo
 |:point_up: Remember not to forget|
 |:---|
 |Using `sudo-g5k` has a cost for the platform: at the end of your job, the node needs to be completely reinstalled so that it is clean for the next user. So it is best to avoid running `sudo-g5k` in very short jobs (less than a hour for instance). The fact that you need to reinstall new packages, `sudo-g5k` will not allow you to perform those tasks if you haven't allocated an entire node, so e.g. `-l core=1` will not work. |
+
+## Access a collection of scientific-related software.
+
+Like in the HPC system, Grid'5000 provides a set of software (mainly scientific-related) using [Environment modules](https://www.grid5000.fr/w/Environment_modules), thanks to the [module command line tool](http://modules.sourceforge.net). They are available from Grid5000 frontends or cluster's nodes (only on standard, big, and nfs environment if deployment is used). 
+
+- Create a reservation with `oarsub`
+- source the configuration before
+  ```bash
+  source /etc/profile.d/lmod.sh
+  ```
+- run `module avail` to see installed librairies and softwares in Grid'5000.
 
 ## Additional disks and storage
 
