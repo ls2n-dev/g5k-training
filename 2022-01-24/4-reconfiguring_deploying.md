@@ -9,7 +9,7 @@ Be root on the bare-metal machines on Grid'5000 with your (possibly customized e
 - get a standard environment (e.g. `oarsub -I`) and use `sudo-g5k`
 - deploy an environment and be `root` on it
 
-## Deploying nodes with Kadeploy
+## Deploying nodes with builtin-env
 
 ### Available Environments
 These environments are maintained by G5K staff. You can  ist all available environment in a site by using the following command line:
@@ -71,6 +71,27 @@ filesystem: ext4
 partition_type: 131
 multipart: false
 ```
+
+## Deploying node with a custom environment
+
+### Create your env
+Build the `.zstd` file.
+
+You have two options:
+- Deploy an env, modify it and save it
+  ```bash
+  frontend% tgz-g5k -m <node> -z -f ~/path_to_myimage.tar.zst
+  ```
+- Build it from scratch (see https://www.grid5000.fr/w/Environments_creation_using_Kameleon_and_Puppet)
+        This is how the public environments are built in a reproducible way
+
+### Deploy it
+```
+kadeploy3 -a mydescription.env -k ~/.ssh/id_rsa.pub -f $OAR_FILE_NODES
+# options
+# -a points to a custom description of environment with your own image/postinstalls/boot options...
+```
+
 
 |:memo: Read further|
 |:---|
