@@ -15,7 +15,9 @@ On each node, we have:
 
 On HPC clusters, users typically don't have root access. However, Grid'5000 allows more flexibility: if you need to install additional system packages or to customize the system, it is possible to become (sudo) root. The tool to do this is called `sudo-g5k`.
 
-Using `sudo-g5k` has a cost for the platform: at the end of your job, the node needs to be completely reinstalled so that it is clean for the next user. So it is best to avoid running `sudo-g5k` in very short jobs (less than a hour for instance). The fact that you need to reinstall new packages, `sudo-g5k` will not allow you to perform those tasks if you haven't allocated an entire node, so e.g. `-l core=1` will not work.
+|:point_up: Remember not to forget|
+|:---|
+|Using `sudo-g5k` has a cost for the platform: at the end of your job, the node needs to be completely reinstalled so that it is clean for the next user. So it is best to avoid running `sudo-g5k` in very short jobs (less than a hour for instance). The fact that you need to reinstall new packages, `sudo-g5k` will not allow you to perform those tasks if you haven't allocated an entire node, so e.g. `-l core=1` will not work. |
 
 ## Additional disks and storage
 
@@ -25,6 +27,7 @@ Some nodes have additional local disks (not on Nantes site), see [Hardware/Stora
 
 In both cases, the disks are simply provided as raw devices, and it is the responsibility of the user to partition them and create a filesystem. Note that there may still be partitions and filesystems present from a previous job. In addition to local disks, more [storage options](https://www.grid5000.fr/w/Storage) are available. 
 
-|❗ Remember ❗ Grid'5000 does NOT have a BACKUP service for the storage it provides: it is on your own responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy). |
-|:-----|
+|:exclamation: Important |
+|:---|
+|Grid'5000 does NOT have a BACKUP service for the storage it provides: it is on your own responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy). |
 
