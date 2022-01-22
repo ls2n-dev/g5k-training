@@ -1,6 +1,6 @@
 # Using nodes in the default environment
 
-When you run `oarsub`, you gain access to physical nodes with a default (standard) software environment. This is a Debian-based system that is regularly updated by the technical team. It contains many pre-installed software and standard softwares installed in the default environment like: `Git, GCC, Python, Pip, Numpy, Ruby, Java...`
+When you run `oarsub`, you gain access to physical nodes with a default (standard) software environment. This is a Debian-based system that is regularly updated by the technical team. It contains many pre-installed software packages installed in the default environment like: `Git, GCC, Python, Pip, Numpy, Ruby, Java...`
 
 *Play on a node by yourself*
 
@@ -24,14 +24,14 @@ On HPC clusters, users typically don't have root access. However, Grid'5000 allo
 
 ## Access a collection of scientific-related software.
 
-Like in the HPC system, Grid'5000 provides a set of software (mainly scientific-related) using [Environment modules](https://www.grid5000.fr/w/Environment_modules), thanks to the [module command line tool](http://modules.sourceforge.net). They are available from Grid5000 frontends or cluster's nodes (only on standard, big, and nfs environment if deployment is used). 
+Like in the HPC system, Grid'5000 provides a set of software (mainly scientific-related) using [Environment modules](https://www.grid5000.fr/w/Environment_modules), thanks to the [module command line tool](http://modules.sourceforge.net). They are available from Grid5000 frontends or from the cluster's nodes (only on standard, big, and nfs environment if deployment is used). 
 
 - Create a reservation with `oarsub`
 - source the configuration before
   ```bash
   source /etc/profile.d/lmod.sh
   ```
-- run `module avail` to see installed librairies and softwares in Grid'5000.
+- run `module avail` to see the installed libraries and software packages in Grid'5000.
   - `module list` to list your loaded soft/libs
   - `module load <app/lib>`
   - `module purge` to unload all loaded soft/lib
@@ -47,5 +47,5 @@ In both cases, the disks are simply provided as raw devices, and it is the respo
 
 |:exclamation: Important |
 |:---|
-|Grid'5000 does NOT have a BACKUP service for the storage it provides: it is on your own responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy). |
+|Grid'5000 does NOT have a BACKUP service for the storage it provides: it is your own responsibility to save important data outside Grid'5000 (or at least to copy data to several Grid'5000 sites in order to increase redundancy). |
 
