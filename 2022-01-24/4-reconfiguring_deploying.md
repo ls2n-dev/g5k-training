@@ -5,17 +5,18 @@ Using `oarsub` gives you access to resources configured in their default (standa
 
 Most Grid'5000 users use resources in a different, much more powerful way: they use [Kadeploy](http://kadeploy3.gforge.inria.fr) to re-install the nodes with their software environment for the duration of their experiment, using Grid'5000 as a Hardware-as-a-Service Cloud. This enables them to use a different Debian version, another Linux distribution, or even Windows, and get root access to install the software stack they need. 
 
-Most Grid'5000 users use resources in a different, much more powerful way: they use Kadeploy to re-install the nodes with their software environment for the duration of their experiment, using Grid'5000 as a Hardware-as-a-Service Cloud. 
-This enables them to use a different Debian version, another Linux distribution, or even Windows, and get root access to install the software stack they need. 
-
 ## Deploying nodes with Kadeploy
 
 ### Reserve one node 
 The deployment job type is required to allow deployment with *Kadeploy*
 
 ```bash
-oarsub -I -l host=1,walltime=00:10:00 -t deploy
+oarsub -I -l host=1,walltime=00:30:00 -t deploy
 ```
+
+|:exclamation: IMPORTANT|
+|:---|
+|You should select at least a host exclusively and a walltime which should be a sum a minimum of *time of installation and estimation of your run of that node*|
 
 ### Find your image
 
