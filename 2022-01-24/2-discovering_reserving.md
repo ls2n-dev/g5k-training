@@ -113,8 +113,10 @@ To reserve a job/resource in an interactive mode (connected to job's node shell)
 - As soon as the resource becomes available, you will be directly connected to the reserved resource with an interactive shell, as indicated by the shell prompt, and 
 - You can run useful commands like `lscpu`, `uname -a`, `nproc`
 - or check on the web with [Gantt diagram / Monika](https://www.grid5000.fr/w/Status#Resources_reservations_.28OAR.29_status).
-  
-**Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately**
+ 
+|:warning: Remember|
+|:---|
+|Before the walltime ends, if you logout from your active session in this mode your reservation will be ended immediately|
 
 ### Reserving node/core resources
 #### Part of a node (cores)
@@ -142,7 +144,9 @@ You will probably want to use more than one node on a given site.
   ```bash
   uniq $OAR_FILE_NODES
   ```
-- By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical `ssh` command use option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)
+|:memo: Take note of this|
+|:---|
+|By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical `ssh` command use option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)|
 
 #### Interactive mode without shell
 You may not want a job to open a shell or to run a script when the job starts, for example because you will use the reserved resources from a program whose lifecycle is longer than the job (and which will use the resources by connecting to the job).
@@ -157,8 +161,9 @@ One trick to achieve this is to run the job in passive mode with a long `sleep` 
   ```bash
   oarsub -C <job id>
   ```
-
-And another solution is simplely to use an [Advanced Reservation Jobs](#advanced-reservation) with a starting date very close in the future, or even with the current date and time. 
+|:memo: Take note of this|
+|:---|
+|And another solution is simplely to use an [Advanced Reservation Jobs](#advanced-reservation) with a starting date very close in the future, or even with the current date and time.|
 
 #### Other types of resources (GPU)
 - To reserve only one GPU (with the associated CPU cores and share of memory) in interactive mode, run:
@@ -184,7 +189,9 @@ So far, all examples were letting OAR decide which resource to allocate to a job
 oarsub -l gpu=1 -I -t besteffort -t exotic
 ```
 
-**WARNING** When using the `-t exotic` option, you can still obtain non-exotic resources! You should filter on the cluster name (`-p` option) or other properties if you want exclusively exotic resources.
+|:warning: You should know.|
+|:---|
+|When using the `-t exotic` option, you can still obtain non-exotic resources! You should filter on the cluster name (`-p` option) or other properties if you want exclusively exotic resources.|
 
 ### Choosing a job duration
 
@@ -234,7 +241,7 @@ If you specify the job's start date, it is an advance reservation. OAR will just
   ```bash
   oarsub -p "cputype = 'Intel Xeon E5-2630 v4'" -l host=3,walltime=2 -I  
   ```
-#### Advanced
+#### Advanced Features
 - [Multi-site jobs with OARGrid](https://www.grid5000.fr/w/Advanced_OAR#Multi-site_jobs_with_OARGrid)
 - [Best Effort Mode Jobs](https://www.grid5000.fr/w/Advanced_OAR#Using_best_effort_mode_jobs)
 - [Checkpoint Mechanism](https://www.grid5000.fr/w/Advanced_OAR#Using_the_checkpointing_trigger_mechanism)
@@ -252,26 +259,6 @@ EOF
 chmod +x $HOME/myjob.sh
 oarsub -S $HOME/myjob.sh
 ```
-
-### Docker and Singularity
-
-- run with singularity a docker running a `busybox` linux
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity exec docker://busybox uname -a"
-  ```
-- run a `lolcow`
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity run docker://godlovedc/lolcow"
-  ```
-- run a `gentoo` distro in a docker image
-  ```bash
-  oarsub -l core=1 "/grid5000/code/bin/singularity exec docker://gentoo/stage3-amd64 cat /etc/gentoo-release"
-  ```
-- run a tensorflow on a gpu cluster
-  ```bash
-  ssh nancy.g5k
-  oarsub -q testing -p "cluster='gruss'" -l gpu=1,core=2 "singularity run --nv docker://tensorflow/tensorflow:latest-gpu"
-  ```
 
 <!--
 https://www.grid5000.fr/w/TechTeam:UsagePolicyCheck
