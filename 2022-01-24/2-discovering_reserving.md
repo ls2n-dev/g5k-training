@@ -268,6 +268,7 @@ For instance here,
 - [Best Effort Mode Jobs](https://www.grid5000.fr/w/Advanced_OAR#Using_best_effort_mode_jobs)
 - [Checkpoint Mechanism](https://www.grid5000.fr/w/Advanced_OAR#Using_the_checkpointing_trigger_mechanism)
 - [Job Dependency](https://www.grid5000.fr/w/Advanced_OAR#Using_jobs_dependency)
+- [Funk](https://grid5000.fr/w/Funk)
 
 <!--
 https://www.grid5000.fr/w/TechTeam:UsagePolicyCheck
