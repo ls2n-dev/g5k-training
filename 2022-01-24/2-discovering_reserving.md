@@ -241,24 +241,28 @@ If you specify the job's start date, it is an advance reservation. OAR will just
   ```bash
   oarsub -p "cputype = 'Intel Xeon E5-2630 v4'" -l host=3,walltime=2 -I  
   ```
+
+#### Job submission with a batch file
+Request `oarsub` to scan a batch file given as the job command, for extra options to apply to the job (lines starting with `#OAR`).
+For instance here, 
+- you build your batch file `myjob.sh` 
+  ```bash
+  #!/bin/zsh
+  #OAR -l host=1/core=1,walltime=00:05:00
+  #OAR -p cluster='econome'
+  hostname
+  ```
+- and you submit it to `oarsub -S`
+  ```
+  chmod +x myjob.sh
+  oarsub -S myjob.sh
+  ```
+  
 #### Advanced Features
 - [Multi-site jobs with OARGrid](https://www.grid5000.fr/w/Advanced_OAR#Multi-site_jobs_with_OARGrid)
 - [Best Effort Mode Jobs](https://www.grid5000.fr/w/Advanced_OAR#Using_best_effort_mode_jobs)
 - [Checkpoint Mechanism](https://www.grid5000.fr/w/Advanced_OAR#Using_the_checkpointing_trigger_mechanism)
 - [Job Dependency](https://www.grid5000.fr/w/Advanced_OAR#Using_jobs_dependency)
-
-### Job submission
-
-```bash
-cat<<EOF>$HOME/myjob.sh
-#!/bin/zsh
-#OAR -l host=1/core=1,walltime=00:05:00
-#OAR -p cluster='econome'
-hostname
-EOF
-chmod +x $HOME/myjob.sh
-oarsub -S $HOME/myjob.sh
-```
 
 <!--
 https://www.grid5000.fr/w/TechTeam:UsagePolicyCheck
