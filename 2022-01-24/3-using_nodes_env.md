@@ -32,6 +32,10 @@ Like in the HPC system, Grid'5000 provides a set of software (mainly scientific-
   source /etc/profile.d/lmod.sh
   ```
 - run `module avail` to see installed librairies and softwares in Grid'5000.
+  - `module list` to list your loaded soft/libs
+  - `module load <app/lib>`
+  - `module purge` to unload all loaded soft/lib
+- see [module documentation here](https://modules.readthedocs.io/en/latest/module.html) or use `man module`
 
 ## Additional disks and storage
 
