@@ -257,6 +257,11 @@ For instance here,
   chmod +x myjob.sh
   oarsub -S myjob.sh
   ```
+- your output will be written in  2 files ended with `stderr` and `stdout`
+  ```
+  OAR.<JOBID>.stdout
+  OAR.<JOBID>.stderr
+  ```
   
 #### Advanced Features
 - [Multi-site jobs with OARGrid](https://www.grid5000.fr/w/Advanced_OAR#Multi-site_jobs_with_OARGrid)
