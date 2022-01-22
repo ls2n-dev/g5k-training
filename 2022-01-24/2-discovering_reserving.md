@@ -2,7 +2,7 @@
 
 At this point, you should now be connected to a site frontend, as indicated by your shell prompt (`<login>@f<site>: ~ %`). This machine will **ONLY** be used to reserve and manipulate resources on this site, using the *OAR software suite* will be the only way to request resources before using them. 
 
-## Hardwares
+## Hardware
 *https://www.grid5000.fr/w/Hardware*
 ### Summary
 ```bash
@@ -25,7 +25,7 @@ At this point, you should now be connected to a site frontend, as indicated by y
 - [Nodes models](https://www.grid5000.fr/w/Hardware#Nodes_models)
 
 ## Discovering and visualizing
-There are several ways to learn about the site's resources and their status:
+There are several ways to learn about site resources and their status:
 
 
 ### On SSH connection
@@ -71,16 +71,16 @@ Additionally, it gives also the list of current or future downtimes due to maint
 ### On the wiki
 Site pages on the wiki (e.g. [Nantes:Home](https://www.grid5000.fr/w/Nantes:Home)) contain a detailed description of the site's hardware and network.
 
-### On specific status pages
+### On site-specific status pages
 The page information links to the resource status on each site, with two different visualizations available:
-- the current placement and queued jobs status displayed by Monika (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **in LIVE**
+- the current placement and queued jobs status displayed by Monika (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **updated LIVE**
 - the current and planned resources reservations in a Gantt Diagram History (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
 
 ## Allocating and accessing resources with OAR
 
-OAR is the **resources and jobs management system** (a.k.a batch manager) used in Grid'5000, just like in traditional HPC centers (commonly with SLURM, PBS, etc.). However, settings and rules of OAR that are configured in Grid'5000 slightly differ from traditional batch manager setups in HPC centers, in order to match the requirements for an experimentation testbed and **not for production use**! 
+OAR is the **resources and jobs management system** (a.k.a batch manager) used in Grid'5000, just like in traditional HPC centers (similar with SLURM, PBS, etc.). However, the settings and rules of OAR that are configured in Grid'5000 slightly differ from traditional batch manager setups in HPC centers, in order to match the requirements for an experimentation testbed and **not for production use**! 
 
-In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu core)**, but by default a OAR job reserves a host (physical computer including all its cpus and cores, and possibly gpus). Hence, what OAR calls nodes are hosts (physical machines). In the `oarsub` resource request (`-l` arguments), `node` is an alias for `host`, so both are equivalent. But prefer here using `host` for consistency with other arguments and other tools that expose host not node. 
+In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu core)**, but by default a OAR job reserves a host (physical computer including all its CPUs and cores, and possibly gpus). Hence, what OAR calls nodes are hosts (physical machines). In the `oarsub` resource request (`-l` arguments), `node` is an alias for `host`, so both are equivalent. But prefer here using `host` for consistency with other arguments and other tools that expose hosts and not nodes. 
 
 [OAR Documentation here](http://oar.imag.fr/documentation)
 
@@ -91,8 +91,8 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 - use option `--project <group name>` when your account is associated to (check with `groups` on CLI or on the [user management portal](https://api.grid5000.fr/stable/users))
 
 #### `oarstat`: check job status
-- `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information
-- `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information 
+- `oarstat -u [-f]`:  show your present and future jobs. Optionaly add more information (with `-f`).
+- `oarstat -j <jobid> [-f]`: show the status of a specific job. Optionaly add more information (with `-f`).
 - `oarstat -j 123456 --json`: same but with a json output. Can be piped to `jq`: ` oarstat -j 123456 --json | jq '.[].command'`
 
 #### `oardel`: delete a job
@@ -100,7 +100,7 @@ In Grid'5000 the **smallest unit of resource managed by OAR is the core (cpu cor
 
 ### Passive and interactive modes
 #### Interactive
-In interactive mode (use option `-I`), a shell is opened on the first default resource (i.e. node) of the job (or on the frontend, if the job is of type `deploy`). In interactive mode, we have 3 ways to kill a job (free a resource) :
+In interactive mode (use option `-I`), a shell is opened on the first default resource (i.e. node) of the job (or on the frontend, if the job is of type `deploy`). In interactive mode, we have 3 ways to kill a job (free a resource):
 - when the job's `shell` is closed (logout of your session)
 - when the job's `walltime` is reached. 
 - when you explicitly perform `oardel` with the job ID.
@@ -146,7 +146,7 @@ You will probably want to use more than one node on a given site.
   ```
 |:memo: Take note of this|
 |:---|
-|By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical `ssh` command use option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)|
+|By default, you can only connect to nodes that are part of your reservation, and only using the `oarsh` connector to go from one node to the other. The connector supports the same options as the classical `ssh` command. Use option `-t allow_classic_ssh`, so it can be used as a replacement for software expecting ssh. Read [tips & tricks ssh vs. oarsh](https://www.grid5000.fr/w/Advanced_OAR#oarsh_vs_ssh:_tips_and_tricks)|
 
 #### Interactive mode without shell
 You may not want a job to open a shell or to run a script when the job starts, for example because you will use the reserved resources from a program whose lifecycle is longer than the job (and which will use the resources by connecting to the job).
@@ -163,7 +163,7 @@ One trick to achieve this is to run the job in passive mode with a long `sleep` 
   ```
 |:memo: Take note of this|
 |:---|
-|And another solution is simplely to use an [Advanced Reservation Jobs](#advanced-reservation) with a starting date very close in the future, or even with the current date and time.|
+|Another solution is simply to use an [Advanced Reservation Jobs](#advanced-reservation) with a starting date very close in the future, or even with the current date and time.|
 
 #### Other types of resources (GPU)
 - To reserve only one GPU (with the associated CPU cores and share of memory) in interactive mode, run:
@@ -176,7 +176,7 @@ One trick to achieve this is to run the job in passive mode with a long `sleep` 
   oarsub -l host=1/gpu=2 -I
   ```
 
-- To reserve on a specific cluster use `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`. **Warning** `ecotype` cluster is down.
+- To reserve on a specific cluster use the `-p` option. On Nantes site, we have 2 clusters `econome` and `ecotype`. **Warning** `ecotype` cluster is down.
 - To reserve a specific device, like an accelerator GPU. [Sites where GPUs are available](https://www.grid5000.fr/w/Hardware#Accelerators_.28GPU.2C_Xeon_Phi.29). Here we reserve 1 GPU on Lyon site:
   ```bash
   outside% ssh lyon.g5k
@@ -218,9 +218,9 @@ If you do not specify the job's start date (`oarsub -r` option), then your job i
 - Therefore, you cannot get the actual list of resources until the job starts (but a forecast is provided, such as what is shown e.g. in the [Drawgantt diagrams for Nantes Site](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)).
 - With batch jobs, you cannot know the start date of your job until it actually starts (any event can change the forecast). But OAR gives an estimation of the start date (such as shown in the Drawgantt diagram, which also changes after any event).
 
-#### Advanced reservations
+#### Advance reservations
 If you specify the job's start date, it is an advance reservation. OAR will just try to find resources for the given schedule, fixed by you.
-- The [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) allows no more than 2 advanced reservations per site (excluding reservations that start in less than one hour)
+- The [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) allows no more than 2 advance reservations per site (excluding reservations that start in less than one hour)
 - With advance reservation jobs, you're not guaranteed to get the count of resources you requested, because OAR planned the allocation of resources at the reservation time.
 - If some resources became unavailable when the job has to start, the job is delayed a bit in case resources may come back (e.g. return from standby).
 - If after 400 seconds, if not all resources are available, the job will start with fewer resources than initially allocated. This is however quite unusual.
