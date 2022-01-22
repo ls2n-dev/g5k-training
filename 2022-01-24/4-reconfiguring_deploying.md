@@ -3,16 +3,16 @@
 
 Using `oarsub` gives you access to resources configured in their default (standard) environment, with a set of software selected by the Grid'5000 team. You can use such an environment to run Java or [MPI programs](https://www.grid5000.fr/w/Run_MPI_On_Grid%275000), [boot virtual machines with KVM](https://www.grid5000.fr/w/Virtualization_on_Grid%275000), or [access a collection of scientific-related software](https://www.grid5000.fr/w/Environment_modules). However, you cannot deeply customize the software environment in a way or another.
 
-Most Grid'5000 users use resources in a different, much more powerful way: they use [Kadeploy](http://kadeploy3.gforge.inria.fr) to re-install the nodes with their software environment for the duration of their experiment, using Grid'5000 as a Hardware-as-a-Service Cloud. This enables them to use a different Debian version, another Linux distribution, or even Windows, and get root access to install the software stack they need. 
+Most advanced Grid'5000 users use resources in a different, much more powerful way: they use [Kadeploy](http://kadeploy3.gforge.inria.fr) to re-install the nodes with their software environment for the duration of their experiment, using Grid'5000 as a Hardware-as-a-Service Cloud. This enables them to use a different Debian version, another Linux distribution, or even Windows, and get root access to install the software stack they need. 
 
-Be root on the bare-metal machines on Grid'5000 with your (possibly customized environment). You have two options:
+To become root on the bare-metal machines on Grid'5000 with your (possibly customized environment). You have two options:
 - get a standard environment (e.g. `oarsub -I`) and use `sudo-g5k`
-- deploy an environment and be `root` on it
+- deploy a custom environment and be `root` on it
 
 ## Deploying nodes with builtin-env
 
 ### Available Environments
-These environments are maintained by G5K staff. You can  ist all available environment in a site by using the following command line:
+These environments are maintained by G5K staff. You can lst all available environments in a site by using the following command line:
 ```
 kaenv3 -l
 ```
@@ -39,10 +39,10 @@ We start here a deployment of the `ubuntu1804-x64-min` image on that node (this 
 
 |:exclamation: IMPORTANT|
 |:---|
-|You should select at least a host exclusively and a walltime which should be a sum a minimum of *time of installation and estimation of your run of that node*|
+|You should select at least a host exclusively and a walltime which should be the sum of a minimum of *time of installation and estimation of your run of that node*|
 
 ### What’s an environment file ?:
-An environment is described by a YAML document. To use the new image, it must be referred by an environment description, so that deploying that environment uses the new image. Note that the environment includes also other information such as the postinstall script and the kernel command line for instance, which can be changed independently from changing the environment image. 
+An environment is described by a YAML document. To use the new image, it must be referred to by an environment description, so that deploying that environment uses the new image. Note that the environment includes also other information such as the postinstall script and the kernel command line for instance, which can be changed independently from changing the environment image. 
 
 ```
 frontend% kaenv3 -p ubuntu2004-x64-min -u deploy
@@ -72,7 +72,7 @@ partition_type: 131
 multipart: false
 ```
 
-## Deploying node with a custom environment
+## Deploying a node with a custom environment
 
 ### Create your env
 Build the `.zstd` file.
