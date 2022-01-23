@@ -7,7 +7,7 @@
  ===== USE hackmd.io or codimd app INSTEAD
  ===== https://codimd.math.cnrs.fr/WU6LkN5rTRuuKXBp0ecG8A
  ===============================================
- latest update: RR @ 20-jan
+ latest update: RR @ Sun Jan 23 14:45:00 CET 2022
 
 -->
 
