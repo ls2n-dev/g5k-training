@@ -71,10 +71,15 @@ Additionally, it gives also the list of current or future downtimes due to maint
 ### On the wiki
 Site pages on the wiki (e.g. [Nantes:Home](https://www.grid5000.fr/w/Nantes:Home)) contain a detailed description of the site's hardware and network.
 
-### On site-specific status pages
-The page information links to the resource status on each site, with two different visualizations available:
-- the current placement and queued jobs status displayed by Monika (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/monika.cgi)) **updated LIVE**
-- the current and planned resources reservations in a Gantt Diagram History (see [Nantes's current status](https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/)) 
+### On site-specific resources status and usage pages
+The page information links to specific pages which display:
+- the current placement and queued jobs status displayed by OAR-Monika at https://intranet.grid5000.fr/oar/Nantes/monika.cgi **updated LIVE**
+- the current and planned resources reservations in a OAR-Gantt Diagram History at https://intranet.grid5000.fr/oar/Nantes/drawgantt-svg/
+- the resources usage by Ganglia at https://intranet.grid5000.fr/ganglia/?c=Nantes
+
+|:memo: As you can guess|
+|:---|
+|To switch visualization page for a specific site, you just change here the name of the site, here *Nantes* by for instance *Lyon*|
 
 ## Allocating and accessing resources with OAR
 
