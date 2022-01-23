@@ -1,7 +1,7 @@
-## Using efficiently Grid'5000
+# Using efficiently Grid'5000
 Until now you have been logging, and submitting jobs manually to Grid'5000. This way of doing is convenient for learning, prototyping, and exploring ideas. But it may quickly become tedious when it comes to performing a set of experiments on a daily basis. In order to be more efficient and user-friendly, Grid'5000 also support more convenient ways of submitting jobs, such as [API requests](https://grid5000.fr/w/API) and [computational notebooks](https://grid5000.fr/w/Notebooks). 
 
-### What Is an Application Programming Interface (API)
+## What Is an Application Programming Interface (API)
 
 > Think of an API like a menu in a restaurant. The menu provides a list of dishes you can order, along with a description of each dish. When you specify what menu items you want, the restaurant’s kitchen does the work and provides you with some finished dishes. You don’t know exactly how the restaurant prepares that food, and you don’t really need to.
 
@@ -13,10 +13,10 @@ This isn’t a perfect metaphor, as developers may have to provide their own dat
 |:---|
 | <ul><li>APIs Make Life Easier for Developers (find what you need and apply it)</li><li>APIs Control Access to Resources (with a restricted policy of usage)</li></ul>|
 
-### Notebooks
+## Notebooks
 Computational notebooks such as Jupyter notebooks can be useful tools to drive or instrument experiments on Grid'5000. 
 
-### Virtual Private Network (VPN) 
+## Virtual Private Network (VPN) 
 
 It allows you to connect your workstation or personal computer to Grid'5000 network (direct connection to site frontend), while preserving security. When connected to Grid'5000 VPN, your computer will be "inside" the Grid'5000 network, thus it won't be required to perform several SSH hops or tunnels to access Grid'5000 nodes, since direct connections are possible. 
 
@@ -54,3 +54,12 @@ ssh <login-g5k>@frontend.lyon.grid5000.fr
   ssh nancy.g5k
   oarsub -q testing -p "cluster='gruss'" -l gpu=1,core=2 "singularity run --nv docker://tensorflow/tensorflow:latest-gpu"
   ```
+
+## Other Specific Usages
+-   [Run MPI programs](https://www.grid5000.fr/w/Run_MPI_On_Grid%275000 "Run MPI On Grid'5000"), possibly taking advantage of several nodes
+-   [Use GPUs with CUDA or AMD ROCm / HIP](https://www.grid5000.fr/w/Accelerators_on_Grid5000 "Accelerators on Grid5000")
+-   [Install packages with Guix](https://www.grid5000.fr/w/Guix "Guix")
+-   [Run containers with Singularity](https://www.grid5000.fr/w/Singularity "Singularity")
+-   [Load additional scientific-related software with Modules](https://www.grid5000.fr/w/Environment_modules "Environment modules")
+-   [Boot virtual machines with KVM](https://www.grid5000.fr/w/Virtualization_on_Grid%275000 "Virtualization on Grid'5000")
+
