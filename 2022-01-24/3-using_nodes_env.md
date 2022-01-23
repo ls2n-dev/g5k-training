@@ -22,21 +22,6 @@ On HPC clusters, users typically don't have root access. However, Grid'5000 allo
 |:---|
 |Using `sudo-g5k` has a cost for the platform: at the end of your job, the node needs to be completely reinstalled so that it is clean for the next user. So it is best to avoid running `sudo-g5k` in very short jobs (less than a hour for instance). The fact that you need to reinstall new packages, `sudo-g5k` will not allow you to perform those tasks if you haven't allocated an entire node, so e.g. `-l core=1` will not work. |
 
-## Access a collection of scientific-related software.
-
-Like in the HPC system, Grid'5000 provides a set of software (mainly scientific-related) using [Environment modules](https://www.grid5000.fr/w/Environment_modules), thanks to the [module command line tool](http://modules.sourceforge.net). They are available from Grid5000 frontends or from the cluster's nodes (only on standard, big, and nfs environment if deployment is used). 
-
-- Create a reservation with `oarsub`
-- source the configuration before
-  ```bash
-  source /etc/profile.d/lmod.sh
-  ```
-- run `module avail` to see the installed libraries and software packages in Grid'5000.
-  - `module list` to list your loaded soft/libs
-  - `module load <app/lib>`
-  - `module purge` to unload all loaded soft/lib
-- see [module documentation here](https://modules.readthedocs.io/en/latest/module.html) or use `man module`
-
 ## Additional disks and storage
 
 Some nodes have additional local disks (not on Nantes site), see [Hardware/Storage](https://www.grid5000.fr/w/Hardware#Storage) for a list of available disks for each cluster. There are two ways to access these local disks:
