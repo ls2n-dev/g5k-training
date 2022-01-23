@@ -1,0 +1,246 @@
+###### tags: `grid5000` `course`
+# LS2N LabClass Session 24-jan-22 / Grid'5000 Fundamentals
+<!-- 
+ latest update: RR @ 20-jan
+-->
+
+[Session Class Page](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/README.md)
+
+## What you'll learn 
+We'll answer common questions like:
+- What is Grid'5000 and how does it apply to technical projects?
+- How can Grid'5000 help me to develop my experiment-driven research studies?
+- What is the difference between Grid'5000 and public or academic cloud resources services?
+
+And when you're done you'll be able to:
+- Use and manage Grid'5000 resources for your technical projects.
+- Leverage the core principles and key phases of Grid'5000 to envision and define more meaningful solutions.
+- Understand concepts, rules and procedures on Grid'5000.
+
+:::info
+💡 Grid'5000 is a scientific instrument supporting experiment-driven research in all areas of computer science, with a focus on distributed computing, cloud computing, high performance computing, big data and networking. **Its use should lead to scientific results or contribute to education in this area.** 
+:::
+
+## Expected attendees
+*Introduce yourself (team, project, research field) and reason why you follow this class*
+- [ ] ~~Angelica~~ (will not attend, notified reason by mail)
+- [ ] Lily Han
+- [ ] Mira
+- [ ] Houssein
+- [ ] Vincent
+- [ ] Yuxin
+
+:::info
+📌 Note for PhD students: if there is a need to justify your attendance during this class session as *heures de formation*, we will ask if we can deliver a certificate.
+:::
+
+## Before we begin... 
+- [ ] Check your internet connection
+- [ ] Check your inbox if you have received a new email with the subject **[Grid5000-account] Your Grid5000 account was created by Richard Randriatoamanana**
+- [ ] Read and Accept the [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) and the [General Conditions of Use](https://www.grid5000.fr/w/Grid5000:General_Conditions_of_Use) ([about the personal data](https://www.grid5000.fr/w/Grid5000:General_Conditions_of_Use#Personal_information))
+
+<!--
+  ssh nantes.g5k
+  g5k-create-tutorial-accounts -f users-labclass-g5k-20220124.csv -e lab-2022-ls2n-g5k-tuto_fundamentals
+
+https://api.grid5000.fr/stable/users/#groups
+https://www.grid5000.fr/w/Tutorial_or_Teaching_Labs_HowTo
+-->
+
+
+## Materials
+- Clone the course from github and go the directory of the session `2022-01-24`
+  ```bash
+  git clone https://github.com/ls2n-dev/g5k-training.git
+  ```
+- Use the pad for Q&A and discussion on your study-case
+    - https://etherpad.in2p3.fr/p/ls2n-labclass-20220124-g5k-tuto
+
+## Tools and files
+- [OpenVPN](https://openvpn.net/community-downloads/) (all OSs) and [Tunnelblick](https://tunnelblick.net/) (mac only) for VPN access
+- [`jq`](https://stedolan.github.io/jq/): a lightweight and flexible command-line JSON processor.
+- [`stress`](https://www.cyberciti.biz/faq/stress-test-linux-unix-server-with-stress-ng/): a simple workload generator tool for POSIX systems.
+- [`htop`](https://www.tecmint.com/htop-linux-process-monitoring/): an interactive and advanced process viewer for Linux OS, an alternative to `top`
+- [`curl`](https://linuxize.com/post/curl-rest-api/): a simple and powerful command-line utility for transferring data from or to a remote server and also interacting with RESTful APIs.
+- other useful Linux commands and files to manage and monitor your resources: 
+    - `lscpu, nproc, uname, lsblk, lshw, lspci, free`
+    - `/proc/meminfo, /proc/cpuinfo`
+    - [find more here](#References)
+----
+
+:::success
+Any questions? Shall we begin?
+:::
+
+## Getting help from User Support
+
+- Community tools
+    - Main website (english): https://www.grid5000.fr
+    - User Portal Documentation: https://www.grid5000.fr/w/Users_Home
+    - Support Page: https://www.grid5000.fr/w/Support
+        - Ticketing for bug tracking : https://intranet.grid5000.fr/bugzilla
+    - FAQ: https://www.grid5000.fr/w/FAQ
+    - CheatSheet: https://www.grid5000.fr/mediawiki/images/G5k_cheat_sheet.pdf
+    - Mailing lists:
+        - users@lists.grid5000.fr [500 subscribers - general questions usage/practices..]
+        - support-staff@lists.grid5000.fr [a dozen of subscribers / admins - bug reports]
+    - Mattermost: https://mattermost.inria.fr/grid5000 (must have an inria gitlab account)
+
+- Local help:
+    - Contact: soutien@ls2n.fr
+    - Mattermost: [subscribe to the workspace ls2n-dev](https://mattermost.univ-nantes.fr/signup_user_complete/?id=jk7cx4oarfg37k38n8iq8m78he)
+      - join the [Grid5000](https://mattermost.univ-nantes.fr/ls2n-dev/channels/grid5000) channel
+
+## Some glossary
+- `site`: set of clusters located in the same location (*room/building/campus*) somewhere in France
+    - at Nantes, clusters are [hosted at IMT Atlantique](https://www.grid5000.fr/w/Nantes:Home)
+- `cluster`: homogeneous set of nodes per site ([clusters in Nantes](https://www.grid5000.fr/w/Nantes:Hardware))
+- `nodes/server`: compute resources, you can reserve a slice of it (e.g. 1 core) or all the whole node to run a computation
+- `scheduler`: program that decides on the placement of the user program on nodes. Grid'5000 uses [OAR](http://oar.imag.fr/docs/latest/) (other such grids use SLURM, SGE ...).
+    - There's one scheduler per site
+- `job`: unit of scheduling. 
+    - A job has a lot of parameters that can influence its placement on the platform.
+
+- `frontend`: Machine from which you can interact with a scheduler. 
+    - There's as many frontends as sites.
+
+## Overview of control and monitoring tools
+
+- Isolated and secured network, [access using SSH](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/0-about_all_ssh.md)
+- Tasks/Resources Management: [**OAR**](http://oar.imag.fr/)
+- System Reconfiguration: [**Kadeploy**](https://kadeploy.gitlabpages.inria.fr/)
+- Network Configuration: ****Kavlan****
+- Monitoring: **Kaspied, Kwapi, Kwollect (grafana), OAR/{Monika,DrawGantt}** ...
+- All in One: [Grid’5000 API](https://www.grid5000.fr/w/API) ([tutorial](https://www.grid5000.fr/w/API_tutorial))
+
+## Connecting for the first time
+
+[Course](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/1-connecting_first_time.md)
+#### Exercices
+:::success
+**#1 -** I want to connect to a particular site. How can I do this ?
+<details><summary>Answer</summary>
+<p>
+We will connect to Lyon.<br>
+<code>outside% ssh login@access.grid5000.fr</code><br>
+<code>access-north% ssh lyon</code>
+</p>
+</details> 
+
+**#2 -** Try to connect to a site directly from your terminal ?
+<details><summary>Answer</summary>
+<p>
+We will connect to Nantes.<br>
+<code>outside% ssh nantes.g5k</code><br>
+<code>fnantes% </code>
+</p>
+</details> 
+
+**#3 -** Where will I be connected if I do `ssh g5k` ?
+<details><summary>Answer</summary>
+<p>
+Either on the frontal <code>access-north</code> or <code>access-south</code>
+</p>
+</details> 
+:::
+
+## Discovering, Visualizing and Reserving resources
+
+[Course](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/2-discovering_reserving.md)
+#### Exercices
+:::success
+**#1 -** How many nodes `Dell PowerEdge R640` does Nancy site have ?
+<details><summary>Answer</summary>
+<p>
+- 140<br>
+- <a href=https://www.grid5000.fr/w/Hardware#Nodes_models>https://www.grid5000.fr/w/Hardware#Nodes_models</a>
+</p>
+</details>
+
+**#2 -** Can you tell me what issue is actually under investigation on site Lyon ?
+<details><summary>Answer</summary>
+<ul>
+ <li> <a href=https://www.grid5000.fr/status/#LYON>https://www.grid5000.fr/status/#LYON</a></li>
+ <li> <a href=https://intranet.grid5000.fr/status/artifact/#LYON>https://intranet.grid5000.fr/status/artifact/#LYON</a> (<a href=https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=7353>bug#7353</a>)</li>
+ </ul>
+</p>
+</details>
+
+**#3 -** What is the url of the Wiki Page of Lille Site ?
+<details><summary>Answer</summary>
+<p>
+<a href=https://www.grid5000.fr/w/Lille:Home>https://www.grid5000.fr/w/Lille:Home</a>
+</p>
+</details>
+
+**#4 -** Investigate why node `neowise-8` is down and since when and why ? And how many GPUs does it have ?
+<details><summary>Answer</summary>
+<p>
+- <a href=https://www.grid5000.fr/w/Hardware#Clusters>https://www.grid5000.fr/w/Hardware#Clusters</a><br>
+- <a href=https://intranet.grid5000.fr/oar/Lyon/drawgantt-svg>https://intranet.grid5000.fr/oar/Lyon/drawgantt-svg</a> (pass your mouse pointer on the histgram)<br>
+- <a href=https://intranet.grid5000.fr/oar/Lyon/monika.cgi?node=neowise-8>https://intranet.grid5000.fr/oar/Lyon/monika.cgi?node=neowise-8</a><br>
+- connect to the site by ssh at lyon.g5k and check the banner information<br>
+- <a href=https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13655>https://intranet.grid5000.fr/bugzilla/show_bug.cgi?id=13655</a>
+</p>
+</details>
+
+**#5 -** Run [commands](https://raw.githubusercontent.com/ls2n-dev/g5k-training/main/2022-01-24/ex-sleep_stop.txt) (follow step by step)
+<details><summary>Answer</summary>
+<p>
+<code>jobnode% pkill sleep</code>
+</p>
+</details>
+:::
+
+## Using nodes in the default environment
+
+[Course](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/3-using_nodes_env.md)
+
+## Deploying your nodes and create your own experimental environment
+
+[Course](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/4-reconfiguring_deploying.md)
+
+#### Exercices
+:::success
+**#1 -** Deploy your own node with your favourite flavor and test your code
+:::
+
+
+## Bonus
+
+### Specific Usage
+-   [Run MPI programs](https://www.grid5000.fr/w/Run_MPI_On_Grid%275000 "Run MPI On Grid'5000"), possibly taking advantage of several nodes
+-   [Use GPUs with CUDA or AMD ROCm / HIP](https://www.grid5000.fr/w/Accelerators_on_Grid5000 "Accelerators on Grid5000")
+-   [Install packages with Guix](https://www.grid5000.fr/w/Guix "Guix")
+-   [Run containers with Singularity](https://www.grid5000.fr/w/Singularity "Singularity")
+-   [Load additional scientific-related software with Modules](https://www.grid5000.fr/w/Environment_modules "Environment modules")
+-   [Boot virtual machines with KVM](https://www.grid5000.fr/w/Virtualization_on_Grid%275000 "Virtualization on Grid'5000")
+
+## Tips & Best Practices
+
+- The one link to bookmark: https://www.grid5000.fr/w/Users_Home
+- To master OAR usage, you can read: https://www.grid5000.fr/w/Advanced_OAR
+- Check [gotchas](https://www.grid5000.fr/w/Grid5000:Gotchas) for counter-intuitive and unexpected features and bugs of Grid'5000.
+
+## References
+- [Command Line Tools to Monitor Linux Performance](https://www.tecmint.com/command-line-tools-to-monitor-linux-performance/)
+- [Best Linux Performance Monitoring and Debugging Tools](https://www.thegeekstuff.com/2011/12/linux-performance-monitoring-tools/)
+
+<!-- NOT DISPLAYED BELOW THIS LINE --
+
+## Agenda
+*https://indico.mathrice.fr/event/313*
+
+- [Getting help from User Support](#Getting-help-from-User-Support)
+- [Overview of control and monitoring tools](#Overview-of-control-and-monitoring-tools)
+- [Connecting for the first time](#Connecting-for-the-first-time)
+- [Discovering, Visualizing and Reserving resources](#Discovering-Visualizing-and-Reserving-resources)
+- [Using nodes in the default environment](#Using-nodes-in-the-default-environment)
+- [Deploying your nodes and create your own experimental environment](#Deploying-your-nodes-and-create-your-own-experimental-environment)
+- [Using Grid'5000 API](#Using-Grid%E2%80%995000-API)
+
+*Break around 15h35*
+
+📌📒🔍📆⛔❌☑✔💡
+https://emoji-copy-paste.com/
+-->
