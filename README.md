@@ -4,7 +4,8 @@ Grid'5000 is a large-scale and flexible testbed research infrastructure for expe
 
 This infrastructure consists of around 1000 machines spread over 11 sites, interconnected by a dedicated 10 Gbit/s network which can be isolated from the Internet for experiments. It allows research teams to configure a network with specific characteristics and to deploy a specific software stack on any or all of the nodes for the duration of an experiment. Reserving bare nodes (bare-metal), Grid'5000 users can deploy any operating system on a wide variety of nodes.
 
-https://www.grid5000.fr
+- Main website: https://www.grid5000.fr
+- An [overview of Grid5000](https://www.grid5000.fr/mediawiki/images/Grid5000.pdf) (april 2019) by Lucas NUSSBAUM and Frederic DESPREZ
 
 <!--
 
