@@ -1,4 +1,4 @@
-# LabClass Session 2022-01-24
+# LabClass Session ~~2022-01-24~~ 8 feb 2022
 
 - [Announce and Timetable](https://indico.mathrice.fr/event/313)
 - [Courseware](https://codimd.math.cnrs.fr/s/2sAxhR36w#)
