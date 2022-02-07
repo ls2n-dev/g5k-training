@@ -1,5 +1,6 @@
 ###### tags: `grid5000` `course`
-# LS2N LabClass Session 24-jan-22 / Grid'5000 Fundamentals
+# LS2N LabClass Session ~~24-jan-22~~ 8-feb-2022 
+# Grid'5000 Fundamentals
 <!--
 
  ===============================================
@@ -8,13 +9,20 @@
  ===== https://codimd.math.cnrs.fr/WU6LkN5rTRuuKXBp0ecG8A
  ===============================================
 
- latest update by RR @ Sun Jan 23 21:19:03 CET 2022
+ latest update by RR @ Mon Feb  7 09:51:00 CET 2022
  history:  
+  - RR @ Sun Jan 23 21:19:03 CET 2022
   - RR @ Sun Jan 23 14:45:00 CET 2022
 
 -->
 
 [Session Class Page](https://github.com/ls2n-dev/g5k-training/blob/main/2022-01-24/README.md)
+
+:::warning
+:exclamation: Session has been postponed. Apologize for the last minute update.
+Stay tuned and check your email today or tomorrow for a new date.
+:::
+
 
 ## What you'll learn 
 We'll answer common questions like:
@@ -32,8 +40,9 @@ And when you're done you'll be able to:
 :::
 
 ## Expected attendees
-*Introduce yourself (team, project, research field) and reason why you follow this class*
-- [ ] ~~Angelica~~ (will not attend, notified reason by mail)
+*Introduce briefly yourself (team, project, research field) and reason why you follow this class*
+
+- [ ] Angelica 
 - [ ] Lily Han
 - [ ] Mira
 - [ ] Houssein
@@ -44,10 +53,25 @@ And when you're done you'll be able to:
 :pushpin: Note for PhD students: if there is a need to justify your attendance during this class session as *heures de formation*, we will ask if we can deliver a certificate.
 :::
 
+## Link Tips
+:::info
+:pushpin: Easy shortcut reminders for links used in this course
+- pre-pend this url `https://cutt.ly/ls2n-lbc22-8feb-` with a `keyword` listed below 
+- zoom link for session 2022 is `https://cutt.ly/ls2n-lbc22-zoom`
+:::
+
+| keyword                                                  | what page               |
+| -------------------------------------------------------- | ----------------------- |
+| [agenda](https://cutt.ly/ls2n-lbc22-8feb-agenda)         | Timetable and Program   |
+| [courseware](https://cutt.ly/ls2n-lbc22-8feb-courseware) | This page               |
+| [survey](https://cutt.ly/ls2n-lbc22-8feb-survey)         | Survey for feedback     |
+| [repo](https://cutt.ly/ls2n-lbc22-8feb-repo)             | Course materials on git |
+| [pad](https://cutt.ly/ls2n-lbc22-8feb-pad) | Pad and Chat |
+
 ## Before we begin... 
-- [ ] Check your internet connection
+- [ ] Have read and accept the [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) and the [General Conditions of Use](https://www.grid5000.fr/w/Grid5000:General_Conditions_of_Use) ([about the personal data](https://www.grid5000.fr
 - [ ] Check your inbox if you have received a new email with the subject **[Grid5000-account] Your Grid5000 account was created by Richard Randriatoamanana**
-- [ ] Have read and accept the [Grid5000 usage policy](https://www.grid5000.fr/w/Grid5000:UsagePolicy) and the [General Conditions of Use](https://www.grid5000.fr/w/Grid5000:General_Conditions_of_Use) ([about the personal data](https://www.grid5000.fr/w/Grid5000:General_Conditions_of_Use#Personal_information))
+/w/Grid5000:General_Conditions_of_Use#Personal_information))
 - [ ] Please have a terminal or a command-line session shell opened on your laptop and test if these commands are installed and worked: `ssh` `wget` `scp` and your favorite text-editor like {emacs/notepad/vim}-like
 - [ ] Clone the course from github on your local machine and go the directory of the session `2022-01-24`
   ```bash
@@ -55,7 +79,8 @@ And when you're done you'll be able to:
   cd g5k-training.git/2022-01-24
   ```
 - [ ] Open the pad for Q&A and discussion on your study-case
-      https://etherpad.in2p3.fr/p/ls2n-labclass-20220124-g5k-tuto
+      https://cutt.ly/ls2n-lbc22-8feb-pad
+- [ ] And before we leave at the end of the session, please take 5mins to fill the survey https://cutt.ly/ls2n-lbc22-8feb-survey for your feedback.
 
 <!--
   ssh nantes.g5k
