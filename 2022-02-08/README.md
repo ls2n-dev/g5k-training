@@ -2,7 +2,7 @@
 
 - [Announce and Timetable](https://cutt.ly/ls2n-lbc22-8feb-agenda)
 - [Courseware](https://cutt.ly/ls2n-lbc22-8feb-courseware)
-- [Course Chat](https://cutt.ly/ls2n-lbc22-8feb-pad)
+- [Course Pad / Chat](https://cutt.ly/ls2n-lbc22-8feb-pad)
 - [Course Materials](https://cutt.ly/ls2n-lbc22-8feb-repo)
 - [FeedBack](https://cutt.ly/ls2n-lbc22-8feb-survey) -- Please fill it after the course and let us know what was great about this course and anything we can improve --
 
